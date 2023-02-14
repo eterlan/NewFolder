@@ -9,4 +9,6 @@ public class MoverConfig : ScriptableObject
     public int hp        = 100;
     public int mp        = 100;
     public int moveSpeed = 5;
+
+    public float generateInterval = 0.2f;
 }

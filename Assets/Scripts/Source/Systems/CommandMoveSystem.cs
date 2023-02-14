@@ -3,30 +3,30 @@ using Entitas;
 
 public class CommandMoveSystem : ReactiveSystem<InputEntity>
 {
-    private IGroup<GameEntity> m_moverGroup;
+    private IGroup<GameEntity> m_playerGroup;
     public CommandMoveSystem(Contexts context) : base(context.input)
     {
-        m_moverGroup = context.game.GetGroup(GameMatcher.Mover);
+        m_playerGroup = context.game.GetGroup(GameMatcher.TagPlayer);
     }
 
     protected override ICollector<InputEntity> GetTrigger(IContext<InputEntity> context)
     {
-        return context.CreateCollector(InputMatcher.AllOf(InputMatcher.RightMouse, InputMatcher.MouseDown));
+        return context.CreateCollector(InputMatcher.AllOf(InputMatcher.RightMouse, InputMatcher.MouseHold));
     }
 
     protected override bool Filter(InputEntity entity)
     {
-        return entity.hasMouseDown;
+        return entity.hasMouseHold;
     }
 
     protected override void Execute(List<InputEntity> entities)
     {
         foreach (var e in entities)
         {
-            var movers = m_moverGroup.GetEntities();
-            foreach (var mover in movers)
+            var movers = m_playerGroup.GetEntities();
+            foreach (var player in movers)
             {
-                mover.ReplaceMoveTarget(e.mouseDown.position);   
+                player.ReplaceMoveTarget(e.mouseHold.position);   
             }
         }
     }

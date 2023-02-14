@@ -8,8 +8,6 @@ public class AddViewSystem : ReactiveSystem<GameEntity>
     private readonly Transform   m_viewContainer = new GameObject("Game Views").transform;
     private readonly GameContext m_context;
 
-
-
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
     {
         return context.CreateCollector(GameMatcher.Sprite);

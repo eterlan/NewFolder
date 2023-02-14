@@ -5,21 +5,23 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    // 感觉不应该在同一个地方生成. 
+    public  MoverConfig m_playerConfig;
     public  MoverConfig moverConfig;
     private Contexts    m_contexts;
     private Systems     m_systems;
     
 
-    private void Start()
+    private void Awake()
     {
         m_contexts = Contexts.sharedInstance;
         m_contexts.Reset();
-        
+        m_contexts.config.SetMoverConfig(moverConfig);
+
         m_contexts.SubscribeId();
-        
+
         m_systems = CreateSystems(m_contexts);
         m_systems.Initialize();
-        m_contexts.config.SetMoverConfig(moverConfig);
     }
 
     private void Update()
@@ -30,7 +32,11 @@ public class GameController : MonoBehaviour
 
     private Systems CreateSystems(Contexts contexts)
     {
-        return new Feature("Systems").Add(new View(contexts)).Add(new Movement(contexts)).Add(new Commander(contexts));
+        return new Feature("Systems")
+            .Add(new View(contexts))
+            .Add(new Movement(contexts))
+            .Add(new Player(contexts))
+            .Add(new Chase(contexts));
     }
 
     [InitializeOnEnterPlayMode]

@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnMoverSystem : ReactiveSystem<InputEntity>
 {
     private readonly Contexts m_context;
+    private float m_timer;
     public SpawnMoverSystem(Contexts context) : base(context.input)
     {
         m_context = context;
@@ -12,7 +13,7 @@ public class SpawnMoverSystem : ReactiveSystem<InputEntity>
 
     protected override ICollector<InputEntity> GetTrigger(IContext<InputEntity> context)
     {
-        return context.CreateCollector(InputMatcher.AllOf(InputMatcher.LeftMouse, InputMatcher.MouseDown));
+        return context.CreateCollector(InputMatcher.AllOf(InputMatcher.LeftMouse, InputMatcher.MouseHold));
     }
 
     protected override bool Filter(InputEntity entity)
@@ -22,17 +23,28 @@ public class SpawnMoverSystem : ReactiveSystem<InputEntity>
 
     protected override void Execute(List<InputEntity> entities)
     {
-        foreach (var e in entities)
+        var config = m_context.config.moverConfig.value;
+        if (m_timer <= 0)
         {
+            m_timer = config.generateInterval;
+            Spawn();
+        }
+        else
+            m_timer -= Time.deltaTime;
+
+        void Spawn()
+        {
+            var e     = m_context.input.leftMouseEntity;
             var mover = m_context.game.CreateEntity();
             mover.isMover = true;
-            mover.AddPosition(e.mouseDown.position, e.mouseDown.position);
+            var pos = e.mouseHold.position;
+            mover.AddPosition(pos, pos);
             mover.AddDirection(Random.Range(0, 360));
-            
-            var config = m_context.config.moverConfig.value;
+        
             mover.AddMoveSpeed(config.moveSpeed);
             mover.AddSprite(config.sprite);
             mover.AddHealth(config.hp, config.hp);
         }
     }
+
 }

@@ -9,6 +9,12 @@ public class IdComponent :IComponent {
     public int value; // must be public in order for the index to be generated
 }
 
+[Game, Unique]
+public class TagPlayer : IComponent
+{
+    
+}
+
 [Game]
 public class MpComponent : IComponent
 {

@@ -8,7 +8,7 @@ public class MovementSystem : IExecuteSystem, ICleanupSystem
 
     public MovementSystem(Contexts contexts)
     {
-        m_moving        = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Mover, GameMatcher.MoveTarget, GameMatcher.MoveSpeed));
+        m_moving        = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.MoveTarget, GameMatcher.MoveSpeed));
         m_moveCompleted = contexts.game.GetGroup(GameMatcher.MoveComplete);
     }
 

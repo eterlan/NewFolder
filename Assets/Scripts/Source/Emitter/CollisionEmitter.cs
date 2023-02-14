@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CollisionEmitter : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         // #Q 靠layer还不够吗? 为什么扯上这兄弟? 再精确一点?
         // if (collision.gameObject.CompareTag())

@@ -3,11 +3,10 @@ using Entitas;
 using Entitas.Unity;
 using UnityEngine;
 
-public class AddViewSystem : ReactiveSystem<GameEntity>
+public class AddViewSystem : ReactiveSystem<GameEntity>, IInitializeSystem
 {
-    private readonly Transform   m_viewContainer = new GameObject("Game Views").transform;
     private readonly GameContext m_context;
-
+    
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
     {
         return context.CreateCollector(GameMatcher.Sprite);
@@ -20,16 +19,22 @@ public class AddViewSystem : ReactiveSystem<GameEntity>
 
     protected override void Execute(List<GameEntity> entities)
     {
-        foreach (GameEntity e in entities)
+        foreach (var e in entities)
         {
-            GameObject go = new GameObject("Game View");
-            go.transform.SetParent(m_viewContainer, false);
+            var  go = new GameObject($"gameEntity: {e.id.value}");
+            go.transform.SetParent(m_context.viewRoot.position, false);
             e.AddView(go);
             go.Link(e);
         }
     }
 
-    public AddViewSystem(IContext<GameEntity> context) : base(context)
+    public AddViewSystem(GameContext context) : base(context)
     {
+        m_context = context;
+    }
+
+    public void Initialize()
+    {
+        m_context.SetViewRoot(new GameObject("View Root").transform);
     }
 }

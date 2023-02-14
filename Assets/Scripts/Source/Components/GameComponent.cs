@@ -35,6 +35,18 @@ public class DirectionComponent : IComponent
     public float value;
 }
 
+[Game, Cleanup(CleanupMode.RemoveComponent)]
+public class NeedViewComponent : IComponent
+{
+    
+}
+
+[Game, Unique]
+public class ViewRoot : IComponent
+{
+    public Transform position;
+}
+
 [Game]
 public class ViewComponent : IComponent
 {
@@ -50,6 +62,13 @@ public class SpriteComponent : IComponent
 [Game]
 public class MoverComponent : IComponent
 {
+    
+}
+
+[Game, Unique]
+public class MoverPrefabTimer : IComponent
+{
+    public float value;
 }
 
 [Game]

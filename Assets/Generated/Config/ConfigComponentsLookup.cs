@@ -9,14 +9,17 @@
 public static class ConfigComponentsLookup {
 
     public const int MoverConfig = 0;
+    public const int PlayerConfig = 1;
 
-    public const int TotalComponents = 1;
+    public const int TotalComponents = 2;
 
     public static readonly string[] componentNames = {
-        "MoverConfig"
+        "MoverConfig",
+        "PlayerConfig"
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(MoverConfigComponent)
+        typeof(MoverConfigComponent),
+        typeof(PlayerConfigComponent)
     };
 }

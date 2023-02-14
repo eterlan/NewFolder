@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Entitas;
+using UnityEngine;
 
 public class CollisionSystem : ReactiveSystem<GameEntity>
 {
@@ -15,14 +16,14 @@ public class CollisionSystem : ReactiveSystem<GameEntity>
 
     protected override bool Filter(GameEntity entity)
     {
-        return entity.hasPosition;
+        return entity.hasCollision;
     }
 
     protected override void Execute(List<GameEntity> entities)
     {
         foreach (var e in entities)
         {
-            
+            Debug.Log("col");
         }
     }
 }

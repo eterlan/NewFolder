@@ -1,10 +1,16 @@
 using System;
 using Entitas.Unity;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class PlayerConverter : MonoBehaviour
 {
+    [Button]
+    public void Test()
+    {
+        Debug.Log("VARs");
+    }
     private void Start()
     {
         var contexts = Contexts.sharedInstance;
@@ -14,13 +20,12 @@ public class PlayerConverter : MonoBehaviour
         e.AddPosition(pos, pos);
         e.AddDirection(Random.Range(0, 360));
             
-        var config = contexts.config.moverConfig.value;
+        var config = contexts.config.playerConfig.value;
         e.AddMoveSpeed(config.moveSpeed);
-        e.AddSprite(config.sprite);
+        // e.AddSprite(config.sprite);
         e.AddHealth(config.hp, config.hp);
+        e.AddView(gameObject);
         gameObject.Link(e);
-        // e.AddView(gameObject);
-        // gameObject.Link(e);
     }
 
     private void Update()

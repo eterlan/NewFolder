@@ -14,15 +14,18 @@ public static class GameComponentsLookup {
     public const int Id = 3;
     public const int MoveComplete = 4;
     public const int Mover = 5;
-    public const int MoveSpeed = 6;
-    public const int MoveTarget = 7;
-    public const int Mp = 8;
-    public const int Position = 9;
-    public const int Sprite = 10;
-    public const int TagPlayer = 11;
-    public const int View = 12;
+    public const int MoverPrefabTimer = 6;
+    public const int MoveSpeed = 7;
+    public const int MoveTarget = 8;
+    public const int Mp = 9;
+    public const int NeedView = 10;
+    public const int Position = 11;
+    public const int Sprite = 12;
+    public const int TagPlayer = 13;
+    public const int View = 14;
+    public const int ViewRoot = 15;
 
-    public const int TotalComponents = 13;
+    public const int TotalComponents = 16;
 
     public static readonly string[] componentNames = {
         "Collision",
@@ -31,13 +34,16 @@ public static class GameComponentsLookup {
         "Id",
         "MoveComplete",
         "Mover",
+        "MoverPrefabTimer",
         "MoveSpeed",
         "MoveTarget",
         "Mp",
+        "NeedView",
         "Position",
         "Sprite",
         "TagPlayer",
-        "View"
+        "View",
+        "ViewRoot"
     };
 
     public static readonly System.Type[] componentTypes = {
@@ -47,12 +53,15 @@ public static class GameComponentsLookup {
         typeof(IdComponent),
         typeof(MoveCompleteComponent),
         typeof(MoverComponent),
+        typeof(MoverPrefabTimer),
         typeof(MoveSpeedComponent),
         typeof(MoveTargetComponent),
         typeof(MpComponent),
+        typeof(NeedViewComponent),
         typeof(PositionComponent),
         typeof(SpriteComponent),
         typeof(TagPlayer),
-        typeof(ViewComponent)
+        typeof(ViewComponent),
+        typeof(ViewRoot)
     };
 }

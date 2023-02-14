@@ -14,6 +14,9 @@ public class GameController : MonoBehaviour
     {
         m_contexts = Contexts.sharedInstance;
         m_contexts.Reset();
+        
+        m_contexts.SubscribeId();
+        
         m_systems = CreateSystems(m_contexts);
         m_systems.Initialize();
         m_contexts.config.SetMoverConfig(moverConfig);

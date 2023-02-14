@@ -1,6 +1,15 @@
 using Entitas;
+using Entitas.CodeGeneration.Attributes;
 using UnityEngine;
 
+
+[Game, Input] // contexts here
+public class IdComponent :IComponent {
+    [PrimaryEntityIndex]
+    public int value; // must be public in order for the index to be generated
+}
+
+[Game]
 public class MpComponent : IComponent
 {
     public int curValue;
@@ -54,8 +63,16 @@ public class MoveCompleteComponent : IComponent
 {
 }
 
+[Game]
 public class HealthComponent : IComponent
 {
     public int curValue;
     public int prevValue;
+}
+
+[Game]
+public class CollisionComponent : IComponent
+{
+    public int a;
+    public int b;
 }

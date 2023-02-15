@@ -12,22 +12,22 @@ public partial class GameContext {
     public MoverPrefabTimer moverPrefabTimer { get { return moverPrefabTimerEntity.moverPrefabTimer; } }
     public bool hasMoverPrefabTimer { get { return moverPrefabTimerEntity != null; } }
 
-    public GameEntity SetMoverPrefabTimer(float newTimer) {
+    public GameEntity SetMoverPrefabTimer(float newValue) {
         if (hasMoverPrefabTimer) {
             throw new Entitas.EntitasException("Could not set MoverPrefabTimer!\n" + this + " already has an entity with MoverPrefabTimer!",
                 "You should check if the context already has a moverPrefabTimerEntity before setting it or use context.ReplaceMoverPrefabTimer().");
         }
         var entity = CreateEntity();
-        entity.AddMoverPrefabTimer(newTimer);
+        entity.AddMoverPrefabTimer(newValue);
         return entity;
     }
 
-    public void ReplaceMoverPrefabTimer(float newTimer) {
+    public void ReplaceMoverPrefabTimer(float newValue) {
         var entity = moverPrefabTimerEntity;
         if (entity == null) {
-            entity = SetMoverPrefabTimer(newTimer);
+            entity = SetMoverPrefabTimer(newValue);
         } else {
-            entity.ReplaceMoverPrefabTimer(newTimer);
+            entity.ReplaceMoverPrefabTimer(newValue);
         }
     }
 
@@ -49,17 +49,17 @@ public partial class GameEntity {
     public MoverPrefabTimer moverPrefabTimer { get { return (MoverPrefabTimer)GetComponent(GameComponentsLookup.MoverPrefabTimer); } }
     public bool hasMoverPrefabTimer { get { return HasComponent(GameComponentsLookup.MoverPrefabTimer); } }
 
-    public void AddMoverPrefabTimer(float newTimer) {
+    public void AddMoverPrefabTimer(float newValue) {
         var index = GameComponentsLookup.MoverPrefabTimer;
         var component = (MoverPrefabTimer)CreateComponent(index, typeof(MoverPrefabTimer));
-        component.value = newTimer;
+        component.value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceMoverPrefabTimer(float newTimer) {
+    public void ReplaceMoverPrefabTimer(float newValue) {
         var index = GameComponentsLookup.MoverPrefabTimer;
         var component = (MoverPrefabTimer)CreateComponent(index, typeof(MoverPrefabTimer));
-        component.value = newTimer;
+        component.value = newValue;
         ReplaceComponent(index, component);
     }
 

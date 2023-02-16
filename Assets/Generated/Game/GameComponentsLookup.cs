@@ -8,27 +8,25 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int Collision = 0;
-    public const int Direction = 1;
-    public const int Health = 2;
-    public const int Id = 3;
-    public const int MoveComplete = 4;
-    public const int Mover = 5;
-    public const int MoverPrefabTimer = 6;
-    public const int MoveSpeed = 7;
-    public const int MoveTarget = 8;
-    public const int Mp = 9;
-    public const int NeedView = 10;
-    public const int Position = 11;
-    public const int Sprite = 12;
-    public const int TagPlayer = 13;
-    public const int View = 14;
-    public const int ViewRoot = 15;
+    public const int Direction = 0;
+    public const int Health = 1;
+    public const int Id = 2;
+    public const int MoveComplete = 3;
+    public const int Mover = 4;
+    public const int MoverPrefabTimer = 5;
+    public const int MoveSpeed = 6;
+    public const int MoveTarget = 7;
+    public const int Mp = 8;
+    public const int NeedView = 9;
+    public const int Position = 10;
+    public const int Sprite = 11;
+    public const int TagPlayer = 12;
+    public const int View = 13;
+    public const int ViewRoot = 14;
 
-    public const int TotalComponents = 16;
+    public const int TotalComponents = 15;
 
     public static readonly string[] componentNames = {
-        "Collision",
         "Direction",
         "Health",
         "Id",
@@ -47,7 +45,6 @@ public static class GameComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(CollisionComponent),
         typeof(DirectionComponent),
         typeof(HealthComponent),
         typeof(IdComponent),

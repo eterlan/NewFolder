@@ -36,7 +36,7 @@ public class GameController : MonoBehaviour
                                      .Add(new Movement(contexts))
                                      .Add(new Player(contexts))
                                      .Add(new Chase(contexts))
-                                     .Add(new CollisionSystem(contexts.game));
+                                     .Add(new CollisionSystem(contexts));
     }
 
     [InitializeOnEnterPlayMode]

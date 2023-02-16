@@ -29,3 +29,10 @@ public class MouseUpComponent : IComponent
 {
     public Vector2 position;
 }
+
+[Input]
+public class CollisionComponent : IComponent
+{
+    public int a;
+    public int b;
+}

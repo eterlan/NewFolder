@@ -3,6 +3,11 @@ using Entitas.CodeGeneration.Attributes;
 using UnityEngine;
 
 
+public class Dmg : IComponent
+{
+    
+}
+
 [Game, Input] // contexts here
 public class IdComponent :IComponent {
     [PrimaryEntityIndex]
@@ -93,11 +98,4 @@ public class HealthComponent : IComponent
 {
     public int curValue;
     public int prevValue;
-}
-
-[Game]
-public class CollisionComponent : IComponent
-{
-    public int a;
-    public int b;
 }

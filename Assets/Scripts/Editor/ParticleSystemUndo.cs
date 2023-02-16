@@ -14,8 +14,6 @@ public class ParticleSystemUndo : Editor
     {
         if (!IsParticleSelected(out _))
             return;
-
-        Debug.Log(Undo.willFlushUndoRecord);
     }
 
     private static void RestorePS()

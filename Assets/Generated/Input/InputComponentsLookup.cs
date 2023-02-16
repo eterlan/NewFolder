@@ -8,16 +8,18 @@
 //------------------------------------------------------------------------------
 public static class InputComponentsLookup {
 
-    public const int Id = 0;
-    public const int LeftMouse = 1;
-    public const int MouseDown = 2;
-    public const int MouseHold = 3;
-    public const int MouseUp = 4;
-    public const int RightMouse = 5;
+    public const int Collision = 0;
+    public const int Id = 1;
+    public const int LeftMouse = 2;
+    public const int MouseDown = 3;
+    public const int MouseHold = 4;
+    public const int MouseUp = 5;
+    public const int RightMouse = 6;
 
-    public const int TotalComponents = 6;
+    public const int TotalComponents = 7;
 
     public static readonly string[] componentNames = {
+        "Collision",
         "Id",
         "LeftMouse",
         "MouseDown",
@@ -27,6 +29,7 @@ public static class InputComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(CollisionComponent),
         typeof(IdComponent),
         typeof(LeftMouseComponent),
         typeof(MouseDownComponent),

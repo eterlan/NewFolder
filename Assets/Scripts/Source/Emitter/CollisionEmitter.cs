@@ -1,4 +1,3 @@
-using System;
 using Entitas.Unity;
 using UnityEngine;
 
@@ -14,6 +13,6 @@ public class CollisionEmitter : MonoBehaviour
             return;
         }
         // TODO 测试和
-        Contexts.sharedInstance.game.CreateEntity().AddCollision(a.creationIndex, b.creationIndex);
+        Contexts.sharedInstance.input.CreateEntity().AddCollision(a.creationIndex, b.creationIndex);
     }
 }

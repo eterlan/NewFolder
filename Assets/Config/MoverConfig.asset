@@ -12,7 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc30ed930b1e43cdac2d8b3797bde96f, type: 3}
   m_Name: MoverConfig
   m_EditorClassIdentifier: 
-  prefab: {fileID: 106736423775181383, guid: e1ebee3617342ed4981872fb77bdba47, type: 3}
+  sprite:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  n:
+    m_AssetGUID: e1ebee3617342ed4981872fb77bdba47
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  s:
+    m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  prefabPath: 
   hp: 100
   mp: 100
   moveSpeed: 5

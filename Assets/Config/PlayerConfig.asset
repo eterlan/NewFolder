@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb9de6b2812448e7bdebf984fb462a73, type: 3}
   m_Name: PlayerConfig
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: ae489f6411bc78c45836ed035c81f292, type: 3}
+  spritePath: 
   hp: 100
   mp: 100
   moveSpeed: 8

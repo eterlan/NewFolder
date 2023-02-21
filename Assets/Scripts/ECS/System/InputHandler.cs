@@ -39,14 +39,13 @@ namespace ECS.System
         private void OnSpawnCancelled(InputAction.CallbackContext _)
         {
             m_contexts.isSpawnCommand                  = false;
-            m_contexts.spawnCommandEntity.isKeyPressed = true;
         }
 
         private void OnMousePosChanged(InputAction.CallbackContext obj)
         {
             var mousePosCS = m_inputConfig.GamePlay.MousePos.ReadValue<Vector2>();
             var mousePosWS = m_camera.ScreenToWorldPoint(mousePosCS);
-            m_contexts.ReplaceMousePos(mousePosWS);
+            m_contexts.ReplaceMousePos(mousePosWS, mousePosCS);
         }
         
         public void TearDown()

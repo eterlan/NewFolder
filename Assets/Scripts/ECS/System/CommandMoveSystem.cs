@@ -29,7 +29,7 @@ namespace ECS.System
 
         protected override void Execute(List<InputEntity> entities)
         {
-            var mousePosWS = m_inputContext.mousePos.position;
+            var mousePosWS = m_inputContext.mousePos.posWS;
             var player     = m_gameContext.tagPlayerEntity;
             player.ReplaceMoveTarget(mousePosWS);
         }

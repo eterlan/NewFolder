@@ -71,12 +71,6 @@ namespace ECS.Components
     
     }
 
-    [Game, Unique]
-    public class MoverPrefabTimer : IComponent
-    {
-        public float value;
-    }
-
     [Game]
     public class MoveTargetComponent : IComponent
     {

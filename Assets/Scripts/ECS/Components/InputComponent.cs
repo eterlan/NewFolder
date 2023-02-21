@@ -19,7 +19,8 @@ namespace ECS.Components
     [Input, Unique]
     public class MousePosComponent : IComponent
     {
-        public Vector2 position;
+        public Vector2 posWS;
+        public Vector2 posCS;
     }
     
     [Input]

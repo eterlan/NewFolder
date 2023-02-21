@@ -47,7 +47,7 @@ public partial class @PlayerInputConfig : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Spawn"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""7dba0681-8364-457d-bf67-37ffba16c81d"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",

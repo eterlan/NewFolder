@@ -106,6 +106,9 @@ namespace ECS.Test
         [Button]
         public void TestChangeScene()
         {
+            m_contexts                      ??= Contexts.sharedInstance;
+            m_contexts.input.isSpawnCommand =   !m_contexts.input.isSpawnCommand;
+
         }
 
         public  int    time = 1000;

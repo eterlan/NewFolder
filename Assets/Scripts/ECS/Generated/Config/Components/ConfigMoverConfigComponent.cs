@@ -12,22 +12,22 @@ public partial class ConfigContext {
     public ECS.Config.MoverConfigComponent moverConfig { get { return moverConfigEntity.moverConfig; } }
     public bool hasMoverConfig { get { return moverConfigEntity != null; } }
 
-    public ConfigEntity SetMoverConfig(ECS.Config.MoverConfig newConfig, UnityEngine.GameObject newPrefab) {
+    public ConfigEntity SetMoverConfig(ECS.Config.MoverConfig newConfig) {
         if (hasMoverConfig) {
             throw new Entitas.EntitasException("Could not set MoverConfig!\n" + this + " already has an entity with ECS.Config.MoverConfigComponent!",
                 "You should check if the context already has a moverConfigEntity before setting it or use context.ReplaceMoverConfig().");
         }
         var entity = CreateEntity();
-        entity.AddMoverConfig(newConfig, newPrefab);
+        entity.AddMoverConfig(newConfig);
         return entity;
     }
 
-    public void ReplaceMoverConfig(ECS.Config.MoverConfig newConfig, UnityEngine.GameObject newPrefab) {
+    public void ReplaceMoverConfig(ECS.Config.MoverConfig newConfig) {
         var entity = moverConfigEntity;
         if (entity == null) {
-            entity = SetMoverConfig(newConfig, newPrefab);
+            entity = SetMoverConfig(newConfig);
         } else {
-            entity.ReplaceMoverConfig(newConfig, newPrefab);
+            entity.ReplaceMoverConfig(newConfig);
         }
     }
 
@@ -49,19 +49,17 @@ public partial class ConfigEntity {
     public ECS.Config.MoverConfigComponent moverConfig { get { return (ECS.Config.MoverConfigComponent)GetComponent(ConfigComponentsLookup.MoverConfig); } }
     public bool hasMoverConfig { get { return HasComponent(ConfigComponentsLookup.MoverConfig); } }
 
-    public void AddMoverConfig(ECS.Config.MoverConfig newConfig, UnityEngine.GameObject newPrefab) {
+    public void AddMoverConfig(ECS.Config.MoverConfig newConfig) {
         var index = ConfigComponentsLookup.MoverConfig;
         var component = (ECS.Config.MoverConfigComponent)CreateComponent(index, typeof(ECS.Config.MoverConfigComponent));
         component.config = newConfig;
-        component.prefab = newPrefab;
         AddComponent(index, component);
     }
 
-    public void ReplaceMoverConfig(ECS.Config.MoverConfig newConfig, UnityEngine.GameObject newPrefab) {
+    public void ReplaceMoverConfig(ECS.Config.MoverConfig newConfig) {
         var index = ConfigComponentsLookup.MoverConfig;
         var component = (ECS.Config.MoverConfigComponent)CreateComponent(index, typeof(ECS.Config.MoverConfigComponent));
         component.config = newConfig;
-        component.prefab = newPrefab;
         ReplaceComponent(index, component);
     }
 

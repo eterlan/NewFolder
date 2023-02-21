@@ -47,12 +47,12 @@ public partial class @PlayerInputConfig : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Spawn"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""7dba0681-8364-457d-bf67-37ffba16c81d"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""MousePos"",

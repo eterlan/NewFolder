@@ -324,13 +324,13 @@ namespace Tool
         private void Save()
         {
             //Debug.Log("Changed & Save");
-            var json = EditorJsonUtility.ToJson(this);
-            EditorPrefs.SetString(nameof(FastSLObjectWindow), json);
+            ToolSaveData.TrySaveData(nameof(FastSLObjectWindow), this);
         }
 
         private void Load()
         {
-            EditorJsonUtility.FromJsonOverwrite(EditorPrefs.GetString(nameof(FastSLObjectWindow)), this);
+            if (!ToolSaveData.TryGetData(nameof(FastSLObjectWindow), this))
+                return;
             for (var index = 0; index < SelectionsSaveSlots.Count; index++)
             {
                 var saveSlot = SelectionsSaveSlots[index];

@@ -16,8 +16,7 @@ namespace ECS.System
 
         protected override ICollector<InputEntity> GetTrigger(IContext<InputEntity> context)
         {
-            //return context.CreateCollector(InputMatcher.AllOf(InputMatcher.LeftMouse, InputMatcher.MouseHold));
-            return null; // TODO
+            return context.CreateCollector(InputMatcher.AllOf(InputMatcher.SpawnCommand));
         }
 
         protected override bool Filter(InputEntity entity)

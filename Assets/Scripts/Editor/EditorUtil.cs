@@ -11,6 +11,9 @@ using Object = UnityEngine.Object;
 
 public static class EditorUtil
 {
+    public const string EditorSaveDataPath = "Assets/settings/ToolSaveData.asset";
+    
+    
     //透明淡黄色
     public static Color drag = new Color(0.961f, 0.91f, 0.78f, 0.2f);
     // 淡黄色

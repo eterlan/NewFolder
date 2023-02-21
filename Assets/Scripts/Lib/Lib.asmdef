@@ -1,13 +1,8 @@
 {
-    "name": "Editor",
+    "name": "Lib",
     "rootNamespace": "",
-    "references": [
-        "GUID:4d8f8e8cdafef98469dae731cacffcdd",
-        "GUID:fc298464ddee91643808c00b329c9a6d"
-    ],
-    "includePlatforms": [
-        "Editor"
-    ],
+    "references": [],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

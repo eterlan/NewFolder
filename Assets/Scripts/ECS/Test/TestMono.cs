@@ -13,6 +13,7 @@ namespace ECS.Test
     {
         private PlayerInputConfig m_inputConfig;
         private Camera            m_camera;
+        private Contexts          m_contexts;
 
         [Button]
         public void Test()
@@ -37,7 +38,16 @@ namespace ECS.Test
 
         private void Update()
         {
-            
+            m_contexts ??= Contexts.sharedInstance;
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                m_contexts.input.isSpawnCommand = true;
+            }
+
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                m_contexts.input.spawnCommandEntity.isKeyPressed = true;
+            }
         }
 
         public  AssetReferenceT<GameObject>      prefabRef;
@@ -63,18 +73,6 @@ namespace ECS.Test
             {
                 instantiateHandle = prefabRef.InstantiateAsync();
             }
-            //prefabHandle.Completed += operationHandle =>
-            {
-                // var prefab = operationHandle.Result;
-                // if (defaultInstantiate)
-                // {
-                //     instance = Instantiate(prefab);
-                // }
-                // else
-                // {
-                //     instantiateHandle = prefabRef.InstantiateAsync();
-                // }
-            };
         }
 
         public bool assetOrHandle;
@@ -108,7 +106,6 @@ namespace ECS.Test
         [Button]
         public void TestChangeScene()
         {
-            Addressables.LoadSceneAsync("NewScene");
         }
 
         public  int    time = 1000;

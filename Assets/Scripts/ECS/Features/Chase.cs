@@ -6,8 +6,7 @@ namespace ECS.Features
     {
         public Chase(Contexts contexts) : base("Chase")
         {
-            // Add(new SpawnMoverSystem(contexts));
-            // TODO
+            Add(new SpawnMoverSystem(contexts));
             Add(new ChaseTargetPlayer(contexts.game));
         }
     }

@@ -13,8 +13,7 @@
     "precompiledReferences": [
         "nunit.framework.dll",
         "Entitas.dll",
-        "Entitas.VisualDebugging.Unity.dll",
-        ""
+        "Entitas.VisualDebugging.Unity.dll"
     ],
     "autoReferenced": false,
     "defineConstraints": [

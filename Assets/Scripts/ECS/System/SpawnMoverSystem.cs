@@ -82,7 +82,7 @@ namespace ECS.System
 
         public void TearDown()
         {
-            if (!m_cts.IsCancellationRequested)
+            if (m_cts is { IsCancellationRequested: false })
             {
                 m_cts.Cancel();
                 m_cts.Dispose();    

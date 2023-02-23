@@ -16,7 +16,7 @@ namespace ECS.Test
         private Contexts          m_contexts;
 
         [Button]
-        public void Test()
+        public void TestInput()
         {
             m_inputConfig                         ??= new PlayerInputConfig();
             m_inputConfig.Enable();
@@ -38,16 +38,7 @@ namespace ECS.Test
 
         private void Update()
         {
-            m_contexts ??= Contexts.sharedInstance;
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                m_contexts.input.isSpawnCommand = true;
-            }
-
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                m_contexts.input.spawnCommandEntity.isKeyPressed = true;
-            }
+            
         }
 
         public  AssetReferenceT<GameObject>      prefabRef;

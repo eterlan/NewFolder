@@ -8,13 +8,12 @@ namespace ECS.Test
     public class TestCollision : MonoBehaviour
     {
         public GameObject go;
-        public GameObject rb; 
         
         [Button]
         public void Test()
         {
             var col = go.GetOrAddComponent<TriggerEmitter>();
-            col.TriggerEnter += () =>
+            col.OnTriggerEnter += _ =>
             {
                 Debug.Log("Trigger");
             };

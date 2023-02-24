@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ECS.Utility;
 using Lib;
 using UnityEditor;
 using UnityEngine;
@@ -16,7 +17,7 @@ namespace Tool
         public static void TrySaveData(string key, Object obj)
         {
             var json     = EditorJsonUtility.ToJson(obj);
-            var saveData = AssetDatabase.LoadAssetAtPath<ToolSaveData>(EditorUtil.EditorSaveDataPath);
+            var saveData = AssetDatabase.LoadAssetAtPath<ToolSaveData>(ResourceUtil.EditorSaveDataPath);
             if (saveData.dict.ContainsKey(key))
             {
                 saveData.dict[key] = json;
@@ -27,7 +28,7 @@ namespace Tool
 
         public static bool TryGetData(string key, Object obj)
         {
-            var saveData = AssetDatabase.LoadAssetAtPath<ToolSaveData>(EditorUtil.EditorSaveDataPath);
+            var saveData = AssetDatabase.LoadAssetAtPath<ToolSaveData>(ResourceUtil.EditorSaveDataPath);
             var success  = saveData.dict.TryGetValue(key, out var json);
             if (success)
             {

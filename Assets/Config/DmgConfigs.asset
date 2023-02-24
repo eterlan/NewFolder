@@ -12,8 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80d420943a3e4b36abf7c349257e95e6, type: 3}
   m_Name: DmgConfigs
   m_EditorClassIdentifier: 
-  configs:
-  - id: 0
+  configItems:
+  - <id>k__BackingField: 1
+    vfxName: 
+    type: 0
+    total: 0
+    interval: 0
+    dmgValue: 0
+  - <id>k__BackingField: 1
     vfxName: 
     type: 0
     total: 0

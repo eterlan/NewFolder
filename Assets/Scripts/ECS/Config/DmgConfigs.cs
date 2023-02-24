@@ -6,15 +6,15 @@ using UnityEngine;
 namespace ECS.Config
 {
     [CreateAssetMenu(fileName = nameof(DmgConfigs), menuName = "GameConfig/DmgConfigs")]
-    public class DmgConfigs : ScriptableObject
+    public class DmgConfigs : ConfigListBase<DmgConfig>
     {
-        public DmgConfig[] configs;
     }
 
     [Serializable]
-    public class DmgConfig
+    public class DmgConfig : IIndex
     {
-        public int     id;
+        [field:SerializeField]
+        public int id { get; private set; }
         public string  vfxName;
         public DmgType type;
         public int     total;

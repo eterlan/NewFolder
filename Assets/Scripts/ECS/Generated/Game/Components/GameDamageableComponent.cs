@@ -8,18 +8,18 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly ECS.Components.Dmg dmgComponent = new ECS.Components.Dmg();
+    static readonly ECS.Components.DamageableComponent damageableComponent = new ECS.Components.DamageableComponent();
 
-    public bool isDmg {
-        get { return HasComponent(GameComponentsLookup.Dmg); }
+    public bool isDamageable {
+        get { return HasComponent(GameComponentsLookup.Damageable); }
         set {
-            if (value != isDmg) {
-                var index = GameComponentsLookup.Dmg;
+            if (value != isDamageable) {
+                var index = GameComponentsLookup.Damageable;
                 if (value) {
                     var componentPool = GetComponentPool(index);
                     var component = componentPool.Count > 0
                             ? componentPool.Pop()
-                            : dmgComponent;
+                            : damageableComponent;
 
                     AddComponent(index, component);
                 } else {
@@ -40,17 +40,17 @@ public partial class GameEntity {
 //------------------------------------------------------------------------------
 public sealed partial class GameMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherDmg;
+    static Entitas.IMatcher<GameEntity> _matcherDamageable;
 
-    public static Entitas.IMatcher<GameEntity> Dmg {
+    public static Entitas.IMatcher<GameEntity> Damageable {
         get {
-            if (_matcherDmg == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.Dmg);
+            if (_matcherDamageable == null) {
+                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.Damageable);
                 matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherDmg = matcher;
+                _matcherDamageable = matcher;
             }
 
-            return _matcherDmg;
+            return _matcherDamageable;
         }
     }
 }

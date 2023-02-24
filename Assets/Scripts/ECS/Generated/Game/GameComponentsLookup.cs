@@ -8,28 +8,31 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int Direction = 0;
-    public const int Dmg = 1;
-    public const int Health = 2;
-    public const int Id = 3;
-    public const int MoveComplete = 4;
-    public const int Mover = 5;
-    public const int MoveSpeed = 6;
-    public const int MoveTarget = 7;
-    public const int Mp = 8;
-    public const int NeedView = 9;
-    public const int Position = 10;
-    public const int Sprite = 11;
-    public const int TagPlayer = 12;
-    public const int View = 13;
-    public const int ViewRoot = 14;
-    public const int Weapon = 15;
+    public const int Damageable = 0;
+    public const int Direction = 1;
+    public const int DmgCreator = 2;
+    public const int Health = 3;
+    public const int Id = 4;
+    public const int MoveComplete = 5;
+    public const int Mover = 6;
+    public const int MoveSpeed = 7;
+    public const int MoveTarget = 8;
+    public const int Mp = 9;
+    public const int NeedView = 10;
+    public const int Position = 11;
+    public const int Sprite = 12;
+    public const int TagPlayer = 13;
+    public const int Trigger = 14;
+    public const int View = 15;
+    public const int ViewRoot = 16;
+    public const int Weapon = 17;
 
-    public const int TotalComponents = 16;
+    public const int TotalComponents = 18;
 
     public static readonly string[] componentNames = {
+        "Damageable",
         "Direction",
-        "Dmg",
+        "DmgCreator",
         "Health",
         "Id",
         "MoveComplete",
@@ -41,14 +44,16 @@ public static class GameComponentsLookup {
         "Position",
         "Sprite",
         "TagPlayer",
+        "Trigger",
         "View",
         "ViewRoot",
         "Weapon"
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(ECS.Components.DamageableComponent),
         typeof(ECS.Components.DirectionComponent),
-        typeof(ECS.Components.Dmg),
+        typeof(ECS.Components.DmgCreator),
         typeof(ECS.Components.HealthComponent),
         typeof(ECS.Components.IdComponent),
         typeof(ECS.Components.MoveCompleteComponent),
@@ -60,6 +65,7 @@ public static class GameComponentsLookup {
         typeof(ECS.Components.PositionComponent),
         typeof(ECS.Components.SpriteComponent),
         typeof(ECS.Components.TagPlayer),
+        typeof(ECS.Components.TriggerComponent),
         typeof(ECS.Components.ViewComponent),
         typeof(ECS.Components.ViewRoot),
         typeof(ECS.Components.WeaponComponent)

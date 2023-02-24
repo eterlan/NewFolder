@@ -4,9 +4,10 @@ using UnityEngine;
 
 namespace ECS.Components
 {
-    public class Dmg : IComponent
+    [Game]
+    public class DmgCreator : IComponent
     {
-    
+        public int id;
     }
 
     [Game, Input] // contexts here
@@ -99,5 +100,17 @@ namespace ECS.Components
     public class WeaponComponent : IComponent
     {
         public int id;
+    }
+
+    [Game, Cleanup(CleanupMode.RemoveComponent)]
+    public class TriggerComponent : IComponent
+    {
+        
+    }
+
+    [Game]
+    public class DamageableComponent : IComponent
+    {
+        
     }
 }

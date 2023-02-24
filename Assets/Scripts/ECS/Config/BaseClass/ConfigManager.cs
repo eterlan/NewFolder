@@ -1,3 +1,4 @@
+using System;
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
 using UnityEngine;
@@ -14,5 +15,15 @@ namespace ECS.Config
         public MoverConfig  moverConfig;
         public DmgConfigs    dmgConfig;
         public WeaponConfigs weaponConfig;
+
+        private void OnEnable()
+        {
+            
+        }
+
+        public void LoadAllConfigs()
+        {
+            
+        }
     }
 }

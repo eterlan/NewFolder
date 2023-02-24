@@ -7,17 +7,16 @@ using UnityEngine;
 namespace ECS.Config
 {
     [CreateAssetMenu(fileName = nameof(WeaponConfigs), menuName = "GameConfig/WeaponConfig")]
-    public class WeaponConfigs : ScriptableObject
+    public class WeaponConfigs : ConfigListBase<WeaponConfig>
     {
-        public WeaponConfig[] config;
     }
 
     [Serializable]
-    public class WeaponConfig
+    public class WeaponConfig : IIndex
     {
-        public int    id;
         public string spritePath;
         public float  shootInterval;
+        public int    id { get; private set; }
     }
 
     [Unique, Config]

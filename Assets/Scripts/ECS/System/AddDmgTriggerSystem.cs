@@ -1,6 +1,10 @@
 using System.Collections.Generic;
+using ECS.Config;
 using ECS.Emitter;
+using ECS.UtilAndEx;
+using ECS.Utility;
 using Entitas;
+using Entitas.Unity;
 using UnityEngine;
 using NotImplementedException = System.NotImplementedException;
 
@@ -8,10 +12,10 @@ namespace ECS.System
 {
     public class AddDmgTriggerSystem : ReactiveSystem<GameEntity>
     {
-        private ConfigContext m_configCtx;
+        private Contexts m_ctx;
         public AddDmgTriggerSystem(Contexts context) : base(context.game)
         {
-            m_configCtx = context.config;
+            m_ctx = context;
         }
 
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
@@ -31,17 +35,44 @@ namespace ECS.System
         {
             foreach (var entity in entities)
             {
-                var triggerEmitter = entity.view.gameObject.GetComponent<TriggerEmitter>();
+                var triggerEmitter = entity.view.gameObject.GetOrAddComponent<TriggerEmitter>();
                 triggerEmitter.OnTriggerEnter += col => AddDmgTriggerHandler(entity, col);
             }
         }
 
-        private void AddDmgTriggerHandler(GameEntity e, Collider2D col)
+        private void AddDmgTriggerHandler(GameEntity selfEntity, Collider2D col)
         {
+            var otherEntityLink = col.gameObject.GetEntityLink(); 
+            if (otherEntityLink == null)
+            {
+                Debug.LogWarning($"Entity: {selfEntity.id.value}碰到了不是entity的{col.gameObject}");
+                return;
+            }
+
+            if (otherEntityLink.entity is not GameEntity otherEntity)
+            {
+                Debug.LogWarning($"Entity: {otherEntityLink.entity.creationIndex}碰到了不是GameEntity的{col.gameObject}");
+                return;
+            }
+
+            if (!otherEntity.isDamageable)
+            {
+                CyLog.Log($"Entity: {otherEntityLink.entity.creationIndex}碰到了无法受伤的{col.gameObject}");
+                return;
+            }
+
             // TODO 应该提供一个base class 给configs查找配置用
-            var configIndex = e.dmgCreator.id;
-            var config      = m_configCtx.dmgConfigs.configs.configItems[configIndex];
-             
+            var configIndex = selfEntity.dmgCreator.id;
+            if (!m_ctx.config.dmgConfigs.configs.TryGetItem(configIndex, out var dmgConfig))
+                return;
+            // 还是把工作交给别人吧, 考虑到别的地方也会使用伤害, 把这个东西跟trigger绑定显得很奇怪
+            // eventEntity.AddTimer(m_ctx.input.time.elapsedTime, dmgConfig.count, 0, dmgConfig.interval, () =>
+            // {
+            //     
+            // });
+            
+            var eventEntity = m_ctx.input.CreateEntity();
+            eventEntity.AddScheduleDmg(configIndex, otherEntity.creationIndex);
         }
     }
 }

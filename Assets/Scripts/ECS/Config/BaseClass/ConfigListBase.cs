@@ -10,19 +10,18 @@ namespace ECS.Config
         [ValidateInput(nameof(ValidateConflict), "id冲突, 请换个id")]
         public List<T> configItems;
         
-        public bool TryGetItem(int id, out T item)
+        public bool TryGetItem(int key, out T item)
         {
-            item = configItems.Find(i => i.id == id);
-            if (item == null)
+            if (!m_configItemDict.TryGetValue(key, out item))
             {
-                Debug.LogWarning($"找不到id为: {id} 的 {nameof(T)}");
+                Debug.LogWarning($"找不到id为: {key} 的 {nameof(T)}");
                 return false;
             }
 
             return true;
         }
         
-        public Dictionary<int, T> dictionary;
+        private Dictionary<int, T> m_configItemDict;
 
         // 当游戏中的时候把所有配置加载到字典中
         // 添加一个按钮能重新加载到字典中
@@ -34,11 +33,11 @@ namespace ECS.Config
         public bool TryFillDictionary()
         {
             var success = true;
-            dictionary ??= new Dictionary<int, T>();
-            dictionary.Clear();
+            m_configItemDict ??= new Dictionary<int, T>();
+            m_configItemDict.Clear();
             foreach (var configItem in configItems)
             {
-                success = dictionary.TryAdd(configItem.id, configItem);
+                success = m_configItemDict.TryAdd(configItem.id, configItem);
                 if (!success)
                     break;
             }
@@ -53,7 +52,7 @@ namespace ECS.Config
         public void FillDictionary()
         {
             var msg = "";
-            msg = TryFillDictionary() ? $"配置表: {name} 成功加载{dictionary.Count}条数据" 
+            msg = TryFillDictionary() ? $"配置表: {name} 成功加载{m_configItemDict.Count}条数据" 
                 : $"加载失败, 请查看配置表: {name}是否有冲突id";
                 
             Debug.Log(msg);

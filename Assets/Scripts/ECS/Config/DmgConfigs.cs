@@ -17,8 +17,8 @@ namespace ECS.Config
         public int id { get; private set; }
         public string  vfxName;
         public DmgType type;
-        public int     total;
-        public int     interval;
+        public int     count;
+        public float     interval;
         public int     dmgValue;
     }
 

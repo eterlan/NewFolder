@@ -18,13 +18,14 @@ public static class InputComponentsLookup {
     public const int MousePos = 7;
     public const int MoveCommand = 8;
     public const int RightMouse = 9;
-    public const int ShootCommand = 10;
-    public const int SpawnCommand = 11;
-    public const int TestDestroy = 12;
-    public const int Time = 13;
-    public const int Timer = 14;
+    public const int ScheduleDmg = 10;
+    public const int ShootCommand = 11;
+    public const int SpawnCommand = 12;
+    public const int TestDestroy = 13;
+    public const int Time = 14;
+    public const int Timer = 15;
 
-    public const int TotalComponents = 15;
+    public const int TotalComponents = 16;
 
     public static readonly string[] componentNames = {
         "Collision",
@@ -37,6 +38,7 @@ public static class InputComponentsLookup {
         "MousePos",
         "MoveCommand",
         "RightMouse",
+        "ScheduleDmg",
         "ShootCommand",
         "SpawnCommand",
         "TestDestroy",
@@ -55,6 +57,7 @@ public static class InputComponentsLookup {
         typeof(ECS.Components.MousePosComponent),
         typeof(ECS.Components.MoveCommand),
         typeof(ECS.Components.RightMouseComponent),
+        typeof(ECS.Components.ScheduleDmgComponent),
         typeof(ECS.Components.ShootCommand),
         typeof(ECS.Components.SpawnCommand),
         typeof(ECS.Components.TestDestroyComponent),

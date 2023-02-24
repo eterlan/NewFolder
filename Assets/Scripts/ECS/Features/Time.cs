@@ -6,7 +6,7 @@ namespace ECS.Features
     {
         public Time(Contexts contexts) : base("Time")
         {
-            Add(new TimeSystem(contexts));
+            Add(new TimeUpdateSystem(contexts));
             Add(new TimerSystem(contexts));
         }
     }

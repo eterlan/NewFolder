@@ -74,10 +74,16 @@ namespace ECS.Components
             duration += extraTime;
         }
     }
-
-
-    [Input]
+    
+    [Input, Cleanup(cleanupMode: CleanupMode.DestroyEntity)]
     public class DmgComponent : IComponent
+    {
+        public int dmgID;
+        public int entityID;
+    }
+
+    [Input, Cleanup(CleanupMode.DestroyEntity)]
+    public class ScheduleDmgComponent : IComponent
     {
         public int dmgID;
         public int entityID;

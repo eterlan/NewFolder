@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace ECS.System
 {
-    public class TimeSystem : IExecuteSystem
+    public class TimeUpdateSystem : IExecuteSystem
     {
         private readonly InputContext m_context;
-        public TimeSystem(Contexts context)
+        public TimeUpdateSystem(Contexts context)
         {
             m_context = context.input;
             m_context.SetTime(0, 0, 1);

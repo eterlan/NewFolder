@@ -16,12 +16,12 @@ MonoBehaviour:
   - <id>k__BackingField: 1
     vfxName: 
     type: 0
-    total: 0
-    interval: 0
-    dmgValue: 0
-  - <id>k__BackingField: 1
+    count: 1
+    interval: 1
+    dmgValue: 5
+  - <id>k__BackingField: 2
     vfxName: 
     type: 0
-    total: 0
-    interval: 0
-    dmgValue: 0
+    count: 2
+    interval: 0.1
+    dmgValue: 3

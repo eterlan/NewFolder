@@ -6,6 +6,7 @@ using ECS.UtilAndEx;
 using Entitas;
 using UnityEditor;
 using UnityEngine;
+using Collision = ECS.Features.Collision;
 using Time = ECS.Features.Time;
 
 namespace ECS
@@ -46,7 +47,7 @@ namespace ECS
                                          .Add(new Movement(contexts))
                                          .Add(new Player(contexts))
                                          .Add(new Chase(contexts))
-                                         .Add(new CollisionSystem(contexts))
+                                         .Add(new Collision(contexts))
                                          .Add(new Features.Test(contexts));
         }
 

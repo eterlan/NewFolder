@@ -95,11 +95,14 @@ namespace ECS.Test
         }
 
         [Button]
-        public void TestChangeScene()
+        public void TestExecuteOrder()
         {
             m_contexts                      ??= Contexts.sharedInstance;
-            m_contexts.input.isSpawnCommand =   !m_contexts.input.isSpawnCommand;
-
+            var e  = m_contexts.game.CreateEntity();
+            var go = new GameObject();
+            e.AddView(go);
+            e.AddDmgCreator(0);
+            e.isTrigger = true;
         }
 
         public  int    time = 1000;

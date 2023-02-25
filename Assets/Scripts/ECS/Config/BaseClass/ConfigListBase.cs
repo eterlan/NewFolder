@@ -52,15 +52,14 @@ namespace ECS.Config
         public void FillDictionary()
         {
             var msg = "";
-            msg = TryFillDictionary() ? $"配置表: {name} 成功加载{m_configItemDict.Count}条数据" 
-                : $"加载失败, 请查看配置表: {name}是否有冲突id";
+            msg = TryFillDictionary() ? $"配置表: {this} 成功加载{m_configItemDict.Count}条数据" 
+                : $"加载失败, 请查看配置表: {this}是否有冲突id";
                 
             Debug.Log(msg);
         }
         
         private bool ValidateConflict()
         {
-            Debug.Log("validate");
             return TryFillDictionary(); 
         }
 

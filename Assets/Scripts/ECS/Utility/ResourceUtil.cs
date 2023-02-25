@@ -4,6 +4,5 @@ namespace ECS.Utility
     {
         public const string ConfigPath         = "Assets/Config";
         public const string EditorSaveDataPath = "Assets/settings/ToolSaveData.asset";
-        
     }
 }

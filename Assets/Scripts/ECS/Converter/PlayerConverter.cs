@@ -20,8 +20,10 @@ namespace ECS.Converter
             var pos = Vector2.zero;
             e.AddPosition(pos, pos);
             e.AddDirection(Random.Range(0, 360));
+
+            if (!contexts.config.playerConfig.config.GetDefaultItem(out var config))
+                return;
             
-            var config = contexts.config.playerConfig.config;
             e.AddMoveSpeed(config.moveSpeed);
             // e.AddSprite(config.sprite);
             e.AddHealth(config.hp, config.hp);

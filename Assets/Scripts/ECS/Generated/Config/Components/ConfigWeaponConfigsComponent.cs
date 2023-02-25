@@ -12,22 +12,22 @@ public partial class ConfigContext {
     public ECS.Config.WeaponConfigsComponent weaponConfigs { get { return weaponConfigsEntity.weaponConfigs; } }
     public bool hasWeaponConfigs { get { return weaponConfigsEntity != null; } }
 
-    public ConfigEntity SetWeaponConfigs(ECS.Config.WeaponConfigs newConfig, UnityEngine.Sprite[] newSprites) {
+    public ConfigEntity SetWeaponConfigs(ECS.Config.WeaponConfigs newValue, UnityEngine.Sprite[] newSprites) {
         if (hasWeaponConfigs) {
             throw new Entitas.EntitasException("Could not set WeaponConfigs!\n" + this + " already has an entity with ECS.Config.WeaponConfigsComponent!",
                 "You should check if the context already has a weaponConfigsEntity before setting it or use context.ReplaceWeaponConfigs().");
         }
         var entity = CreateEntity();
-        entity.AddWeaponConfigs(newConfig, newSprites);
+        entity.AddWeaponConfigs(newValue, newSprites);
         return entity;
     }
 
-    public void ReplaceWeaponConfigs(ECS.Config.WeaponConfigs newConfig, UnityEngine.Sprite[] newSprites) {
+    public void ReplaceWeaponConfigs(ECS.Config.WeaponConfigs newValue, UnityEngine.Sprite[] newSprites) {
         var entity = weaponConfigsEntity;
         if (entity == null) {
-            entity = SetWeaponConfigs(newConfig, newSprites);
+            entity = SetWeaponConfigs(newValue, newSprites);
         } else {
-            entity.ReplaceWeaponConfigs(newConfig, newSprites);
+            entity.ReplaceWeaponConfigs(newValue, newSprites);
         }
     }
 
@@ -49,18 +49,18 @@ public partial class ConfigEntity {
     public ECS.Config.WeaponConfigsComponent weaponConfigs { get { return (ECS.Config.WeaponConfigsComponent)GetComponent(ConfigComponentsLookup.WeaponConfigs); } }
     public bool hasWeaponConfigs { get { return HasComponent(ConfigComponentsLookup.WeaponConfigs); } }
 
-    public void AddWeaponConfigs(ECS.Config.WeaponConfigs newConfig, UnityEngine.Sprite[] newSprites) {
+    public void AddWeaponConfigs(ECS.Config.WeaponConfigs newValue, UnityEngine.Sprite[] newSprites) {
         var index = ConfigComponentsLookup.WeaponConfigs;
         var component = (ECS.Config.WeaponConfigsComponent)CreateComponent(index, typeof(ECS.Config.WeaponConfigsComponent));
-        component.config = newConfig;
+        component.value = newValue;
         component.sprites = newSprites;
         AddComponent(index, component);
     }
 
-    public void ReplaceWeaponConfigs(ECS.Config.WeaponConfigs newConfig, UnityEngine.Sprite[] newSprites) {
+    public void ReplaceWeaponConfigs(ECS.Config.WeaponConfigs newValue, UnityEngine.Sprite[] newSprites) {
         var index = ConfigComponentsLookup.WeaponConfigs;
         var component = (ECS.Config.WeaponConfigsComponent)CreateComponent(index, typeof(ECS.Config.WeaponConfigsComponent));
-        component.config = newConfig;
+        component.value = newValue;
         component.sprites = newSprites;
         ReplaceComponent(index, component);
     }

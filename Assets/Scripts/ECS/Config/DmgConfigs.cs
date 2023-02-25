@@ -6,7 +6,7 @@ using UnityEngine;
 namespace ECS.Config
 {
     [CreateAssetMenu(fileName = nameof(DmgConfigs), menuName = "GameConfig/DmgConfigs")]
-    public class DmgConfigs : ConfigListBase<DmgConfig>
+    public class DmgConfigs : ConfigBase<DmgConfig>
     {
     }
 

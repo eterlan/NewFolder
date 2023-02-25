@@ -98,7 +98,8 @@ namespace ECS.Components
     [Input, Unique]
     public class SpawnCommand : IComponent
     {
-        
+        public int count;
+        // SpawnType
     }
 
     [Input, Unique]

@@ -12,5 +12,12 @@ namespace ECS.Utility
                 return;
             Debug.Log(message);
         }
+        
+        public static void LogError(object message)
+        {
+            if (!enable)
+                return;
+            Debug.LogError(message);
+        }
     }
 }

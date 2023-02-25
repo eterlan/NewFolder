@@ -5,7 +5,7 @@ using Lib;
 
 namespace ECS.Config
 {
-    public interface IIndex
+    public interface IIndex 
     {
         public int id { get; }
     }

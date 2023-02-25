@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cd04ed2be0f48f6b91dc97f3a3f8f42, type: 3}
   m_Name: WeaponConfigs
   m_EditorClassIdentifier: 
-  config:
-    id: 0
-    spritePath: 
+  configItems:
+  - spritePath: 
     shootInterval: 0

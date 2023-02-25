@@ -9,19 +9,30 @@
 public partial class InputContext {
 
     public InputEntity spawnCommandEntity { get { return GetGroup(InputMatcher.SpawnCommand).GetSingleEntity(); } }
+    public ECS.Components.SpawnCommand spawnCommand { get { return spawnCommandEntity.spawnCommand; } }
+    public bool hasSpawnCommand { get { return spawnCommandEntity != null; } }
 
-    public bool isSpawnCommand {
-        get { return spawnCommandEntity != null; }
-        set {
-            var entity = spawnCommandEntity;
-            if (value != (entity != null)) {
-                if (value) {
-                    CreateEntity().isSpawnCommand = true;
-                } else {
-                    entity.Destroy();
-                }
-            }
+    public InputEntity SetSpawnCommand(int newCount) {
+        if (hasSpawnCommand) {
+            throw new Entitas.EntitasException("Could not set SpawnCommand!\n" + this + " already has an entity with ECS.Components.SpawnCommand!",
+                "You should check if the context already has a spawnCommandEntity before setting it or use context.ReplaceSpawnCommand().");
         }
+        var entity = CreateEntity();
+        entity.AddSpawnCommand(newCount);
+        return entity;
+    }
+
+    public void ReplaceSpawnCommand(int newCount) {
+        var entity = spawnCommandEntity;
+        if (entity == null) {
+            entity = SetSpawnCommand(newCount);
+        } else {
+            entity.ReplaceSpawnCommand(newCount);
+        }
+    }
+
+    public void RemoveSpawnCommand() {
+        spawnCommandEntity.Destroy();
     }
 }
 
@@ -35,25 +46,25 @@ public partial class InputContext {
 //------------------------------------------------------------------------------
 public partial class InputEntity {
 
-    static readonly ECS.Components.SpawnCommand spawnCommandComponent = new ECS.Components.SpawnCommand();
+    public ECS.Components.SpawnCommand spawnCommand { get { return (ECS.Components.SpawnCommand)GetComponent(InputComponentsLookup.SpawnCommand); } }
+    public bool hasSpawnCommand { get { return HasComponent(InputComponentsLookup.SpawnCommand); } }
 
-    public bool isSpawnCommand {
-        get { return HasComponent(InputComponentsLookup.SpawnCommand); }
-        set {
-            if (value != isSpawnCommand) {
-                var index = InputComponentsLookup.SpawnCommand;
-                if (value) {
-                    var componentPool = GetComponentPool(index);
-                    var component = componentPool.Count > 0
-                            ? componentPool.Pop()
-                            : spawnCommandComponent;
+    public void AddSpawnCommand(int newCount) {
+        var index = InputComponentsLookup.SpawnCommand;
+        var component = (ECS.Components.SpawnCommand)CreateComponent(index, typeof(ECS.Components.SpawnCommand));
+        component.count = newCount;
+        AddComponent(index, component);
+    }
 
-                    AddComponent(index, component);
-                } else {
-                    RemoveComponent(index);
-                }
-            }
-        }
+    public void ReplaceSpawnCommand(int newCount) {
+        var index = InputComponentsLookup.SpawnCommand;
+        var component = (ECS.Components.SpawnCommand)CreateComponent(index, typeof(ECS.Components.SpawnCommand));
+        component.count = newCount;
+        ReplaceComponent(index, component);
+    }
+
+    public void RemoveSpawnCommand() {
+        RemoveComponent(InputComponentsLookup.SpawnCommand);
     }
 }
 

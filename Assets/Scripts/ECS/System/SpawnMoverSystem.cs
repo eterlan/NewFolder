@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
@@ -8,6 +9,8 @@ using Entitas.Unity;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using NotImplementedException = System.NotImplementedException;
+using Object = UnityEngine.Object;
+using Random = UnityEngine.Random;
 
 namespace ECS.System
 {
@@ -33,19 +36,21 @@ namespace ECS.System
 
         protected override async void Execute(List<InputEntity> entities)
         {
-            var moverConfigComponent = m_context.config.moverConfig; 
-            var config               = moverConfigComponent.config;
-            var prefab = await moverConfigComponent.config.prefabRef.OperationHandle.Convert<GameObject>();
+            var moverConfigComponent = m_context.config.moverConfig;
+            if (!moverConfigComponent.config.GetDefaultItem(out var config))
+                return;
+            var prefab = await config.prefabRef.OperationHandle.Convert<GameObject>();
 
-            var hasSpawnCommand = m_context.input.isSpawnCommand;
+            var hasSpawnCommand = m_context.input.hasSpawnCommand;
             if (hasSpawnCommand)
             {
                 m_cts = new CancellationTokenSource();
                 var canceled = false;
                 while (!canceled)
                 {
-                    Spawn(prefab, config);
-                    canceled = await UniTask.Delay(Mathf.RoundToInt(config.spawnInterval * 1000), cancellationToken: m_cts.Token).SuppressCancellationThrow();
+                    for (var i = 0; i < config.spawnAmountEachTime; i++) 
+                        Spawn(prefab, config);
+                    canceled = await UniTask.Delay(TimeSpan.FromSeconds(config.spawnInterval), cancellationToken: m_cts.Token).SuppressCancellationThrow();
                 }
             }
             else
@@ -55,7 +60,7 @@ namespace ECS.System
             }
         }
 
-        private void Spawn(GameObject prefab, MoverConfig config)
+        private void Spawn(GameObject prefab, MoverConfigItem config)
         {
             var mousePosWS = m_context.input.mousePos.posWS;
 
@@ -77,7 +82,9 @@ namespace ECS.System
         public void Initialize()
         {
             var moverConfigComponent = m_context.config.moverConfig;
-            moverConfigComponent.config.prefabRef.LoadAssetAsync<GameObject>();
+            if (!moverConfigComponent.config.GetDefaultItem(out var item)) 
+                return;
+            item.prefabRef.LoadAssetAsync<GameObject>();
         }
 
         public void TearDown()
@@ -89,7 +96,8 @@ namespace ECS.System
             }
             var moverConfigComponent = m_context.config.moverConfig;
             
-            moverConfigComponent.config.prefabRef.ReleaseAsset();
+            moverConfigComponent.config.GetDefaultItem(out var item);
+            item.prefabRef.ReleaseAsset();
         }
     }
 }

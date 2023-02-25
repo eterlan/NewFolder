@@ -21,10 +21,10 @@ namespace ECS
         {
             m_contexts = Contexts.sharedInstance;
             m_contexts.Reset();
-            m_contexts.config.SetMoverConfig(ConfigManager.moverConfig);
-            m_contexts.config.SetPlayerConfig(ConfigManager.playerConfig, null);
-            m_contexts.config.SetWeaponConfigs(ConfigManager.weaponConfig, new Sprite[] { });
-            m_contexts.config.SetDmgConfigs(ConfigManager.dmgConfig, new GameObject[] { });
+            // m_contexts.config.SetMoverConfig(ConfigManager.moverConfig);
+            // m_contexts.config.SetPlayerConfig(ConfigManager.playerConfig, null);
+            // m_contexts.config.SetWeaponConfigs(ConfigManager.weaponConfig, new Sprite[] { });
+            // m_contexts.config.SetDmgConfigs(ConfigManager.dmgConfig, new GameObject[] { });
 
             m_contexts.SubscribeId();
 

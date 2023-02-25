@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f30209bdaf44d96845df791626ad8f7, type: 3}
   m_Name: ConfigManager
   m_EditorClassIdentifier: 
-  playerConfig: {fileID: 11400000, guid: 2471f7a0ccc3df94abc4c1575bcd8d36, type: 2}
-  moverConfig: {fileID: 11400000, guid: fe8fbf44bf9e7cd4ebce3cc4d92b0c4d, type: 2}
-  dmgConfig: {fileID: 11400000, guid: 17d88737dfb87e64b83d107b781c076a, type: 2}
-  weaponConfig: {fileID: 11400000, guid: a898ca7eaed51bf41815bca72442f56d, type: 2}
+  label:
+    m_LabelString: 
+  configs: []

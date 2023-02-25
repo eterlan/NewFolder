@@ -7,8 +7,9 @@ using UnityEngine;
 namespace ECS.Config
 {
     [CreateAssetMenu(fileName = nameof(WeaponConfigs), menuName = "GameConfig/WeaponConfig")]
-    public class WeaponConfigs : ConfigListBase<WeaponConfig>
+    public class WeaponConfigs : ConfigBase<WeaponConfig>
     {
+        
     }
 
     [Serializable]
@@ -22,7 +23,7 @@ namespace ECS.Config
     [Unique, Config]
     public class WeaponConfigsComponent : IComponent
     {
-        public WeaponConfigs config;
+        public WeaponConfigs value;
         public Sprite[]      sprites;
     }
 }

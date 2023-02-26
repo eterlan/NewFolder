@@ -29,7 +29,7 @@ namespace ECS.System
             foreach (var entity in entities)
             {
                 // TEST -90
-                entity.view.gameObject.transform.rotation = Quaternion.AngleAxis(entity.direction.value - 90, Vector3.forward);
+                entity.view.gameObject.transform.rotation = Quaternion.AngleAxis(entity.direction.value, Vector3.forward);
             }
         }
     }

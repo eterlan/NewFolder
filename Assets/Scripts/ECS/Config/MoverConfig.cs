@@ -13,8 +13,13 @@ namespace ECS.Config
     [CreateAssetMenu(fileName = nameof(MoverConfig), menuName = "GameConfig/MoverConfig")]
     public class MoverConfig : ConfigBase<MoverConfigItem>
     {
+        public override void InitConfig(ConfigContext context)
+        {
+            context.SetMoverConfig(this);
+        }
     }
-
+    
+    [Serializable]
     public class MoverConfigItem : IIndex 
     {
         [field:SerializeField]

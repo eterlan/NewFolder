@@ -36,7 +36,8 @@ namespace ECS.System
         {
             foreach (var entity in entities)
             {
-                var triggerEmitter = entity.view.gameObject.GetOrAddComponent<TriggerEmitter>();
+                var triggerEmitter = 
+                    entity.view.gameObject.GetOrAddComponent<TriggerEmitter>();
                 triggerEmitter.OnTriggerEnter += col => AddDmgTriggerHandler(entity, col);
             }
         }
@@ -64,7 +65,6 @@ namespace ECS.System
                 return;
             }
 
-            // TODO 应该提供一个base class 给configs查找配置用
             var configIndex = selfEntity.dmgCreator.id;
             if (!m_ctx.config.dmgConfigs.configs.TryGetItem(configIndex, out var dmgConfig))
                 return;

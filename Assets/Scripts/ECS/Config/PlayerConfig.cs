@@ -1,3 +1,4 @@
+using System;
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
 using UnityEngine;
@@ -7,9 +8,13 @@ namespace ECS.Config
     [CreateAssetMenu(fileName = nameof(PlayerConfig), menuName = "GameConfig/PlayerConfig")]
     public class PlayerConfig : ConfigBase<PlayerConfigItem>
     {
-        
+        public override void InitConfig(ConfigContext context)
+        {
+            context.SetPlayerConfig(this, null);
+        }
     }
 
+    [Serializable]
     public class PlayerConfigItem : IIndex
     {
         [field: SerializeField]

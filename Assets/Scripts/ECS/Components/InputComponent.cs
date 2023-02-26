@@ -38,7 +38,7 @@ namespace ECS.Components
     {
     }
 
-    [Input]
+    [Input, Cleanup(CleanupMode.DestroyEntity)]
     public class CollisionComponent : IComponent
     {
         public int a;

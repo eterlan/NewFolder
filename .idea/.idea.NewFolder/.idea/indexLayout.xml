@@ -2,7 +2,11 @@
 <project version="4">
   <component name="UserContentModel">
     <attachedFolders />
-    <explicitIncludes />
-    <explicitExcludes />
+    <explicitIncludes>
+      <Path>Assets/Scripts/ECS/_</Path>
+    </explicitIncludes>
+    <explicitExcludes>
+      <Path>Assets/Scripts/ECS/a</Path>
+    </explicitExcludes>
   </component>
 </project>

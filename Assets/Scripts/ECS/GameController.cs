@@ -1,4 +1,5 @@
 using System;
+using Cysharp.Threading.Tasks;
 using ECS.Config;
 using ECS.Features;
 using ECS.System;
@@ -17,14 +18,11 @@ namespace ECS
         private Contexts      m_contexts;
         private Systems       m_systems;
 
-        private void Awake()
+        private async void Awake()
         {
             m_contexts = Contexts.sharedInstance;
             m_contexts.Reset();
-            // m_contexts.config.SetMoverConfig(ConfigManager.moverConfig);
-            // m_contexts.config.SetPlayerConfig(ConfigManager.playerConfig, null);
-            // m_contexts.config.SetWeaponConfigs(ConfigManager.weaponConfig, new Sprite[] { });
-            // m_contexts.config.SetDmgConfigs(ConfigManager.dmgConfig, new GameObject[] { });
+            ConfigManager.Init(m_contexts.config);
 
             m_contexts.SubscribeId();
 
@@ -32,12 +30,10 @@ namespace ECS
             m_systems.Initialize();
         }
 
-        delegate void Upd();
         private void Update()
         {
             m_systems.Execute();
-            m_systems.Cleanup();
-            var s = new Upd(Update);
+            m_systems.Cleanup(); 
         }
 
         private Systems CreateSystems(Contexts contexts)
@@ -48,7 +44,9 @@ namespace ECS
                                          .Add(new Player(contexts))
                                          .Add(new Chase(contexts))
                                          .Add(new Collision(contexts))
-                                         .Add(new Features.Test(contexts));
+                                         .Add(new Features.Test(contexts))
+                                         .Add(new GameCleanupSystems(contexts))
+                                         .Add(new InputCleanupSystems(contexts));
         }
 
 #if UNITY_EDITOR

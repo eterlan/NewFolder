@@ -12,3 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc30ed930b1e43cdac2d8b3797bde96f, type: 3}
   m_Name: MoverConfig
   m_EditorClassIdentifier: 
+  configItems:
+  - <id>k__BackingField: 0
+    prefabRef:
+      m_AssetGUID: e1ebee3617342ed4981872fb77bdba47
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    hp: 100
+    mp: 100
+    moveSpeed: 5
+    spawnInterval: 0.2
+    spawnAmountEachTime: 100

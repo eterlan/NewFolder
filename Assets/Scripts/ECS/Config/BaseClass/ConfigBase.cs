@@ -5,12 +5,18 @@ using UnityEngine;
 
 namespace ECS.Config
 {
-    public class ConfigBase<T> : ScriptableObject where T : class, IIndex
+    public abstract class ConfigBase : ScriptableObject
+    {
+        public abstract void InitConfig(ConfigContext context);
+        public abstract void FillDictionary();
+    }
+    
+    public abstract class ConfigBase<T> : ConfigBase where T : class, IIndex
     {
         [Searchable]
         [ValidateInput(nameof(ValidateConflict), "id冲突, 请换个id")]
         public List<T> configItems;
-        
+
         public bool TryGetItem(int key, out T item)
         {
             if (!m_configItemDict.TryGetValue(key, out item))
@@ -46,7 +52,7 @@ namespace ECS.Config
         // 当游戏中的时候把所有配置加载到字典中
         // 添加一个按钮能重新加载到字典中
 
-        public bool TryFillDictionary()
+        private bool TryFillDictionary()
         {
             if (configItems == null)
                 return false;
@@ -66,7 +72,7 @@ namespace ECS.Config
         #region ODIN
 
         [Button("填充数据")]
-        public void FillDictionary()
+        public override void FillDictionary()
         {
             var msg = "";
             msg = TryFillDictionary() ? $"配置表: {this} 成功加载{m_configItemDict.Count}条数据" 

@@ -26,8 +26,9 @@ namespace ECS.Converter
             
             e.AddMoveSpeed(config.moveSpeed);
             // e.AddSprite(config.sprite);
-            e.AddHealth(config.hp, config.hp);
+            e.AddHealth(config.hp, config.hp, config.hp);
             e.AddView(gameObject);
+            e.AddWeapon(0);
             gameObject.Link(e);
         }
 

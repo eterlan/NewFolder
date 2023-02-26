@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using ECS.Config;
-using ECS.Utility;
 using Entitas;
 using Entitas.Unity;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using NotImplementedException = System.NotImplementedException;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
@@ -76,7 +73,7 @@ namespace ECS.System
         
             mover.AddMoveSpeed(config.moveSpeed);
             // mover.AddSprite(config.sprite);
-            mover.AddHealth(config.hp, config.hp);
+            mover.AddHealth(config.hp, config.hp, config.hp);
         }
 
         public void Initialize()

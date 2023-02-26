@@ -32,7 +32,8 @@ namespace ECS.System
                     continue;
                 
                 // TEST DMG
-                hurtE.ReplaceHealth(hurtE.health.curValue - dmgConfig.dmgValue, hurtE.health.curValue);
+                var newValue = hurtE.health.value - dmgConfig.dmgValue;
+                hurtE.ReplaceHealth(newValue, hurtE.health.value, newValue);
                 
                 // Play VFX and others 
                 

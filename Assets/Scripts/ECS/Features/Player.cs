@@ -8,7 +8,7 @@ namespace ECS.Features
         {
             Add(new InputHandler(contexts));
             Add(new CommandMoveSystem(contexts));
-            // TODO
+            Add(new ShootSystem(contexts));
         }
     }
 }

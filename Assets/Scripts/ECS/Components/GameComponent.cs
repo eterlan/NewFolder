@@ -90,18 +90,23 @@ namespace ECS.Components
     }
 
     [Game]
-    public class HealthComponent : IComponent
+    public class HealthComponent : IModifiableState
     {
-        public int curValue;
-        public int prevValue;
+        // public int curValue;
+        public int value      { get; set; }
+        public int prevValue  { get; set; }
+        public int finalValue { get; set; }
     }
+    
 
     [Game]
     public class WeaponComponent : IComponent
     {
-        public int id;
+        public int   weaponID;
     }
 
+
+    
     [Game, Cleanup(CleanupMode.RemoveComponent)]
     public class TriggerComponent : IComponent
     {

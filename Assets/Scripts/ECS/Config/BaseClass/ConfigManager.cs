@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
 using Sirenix.OdinInspector;
@@ -18,7 +19,7 @@ namespace ECS.Config
     {
         public AssetLabelReference label;
         [ShowInInspector]
-        public List<ConfigBase<IIndex>> configs;
+        public List<ConfigBase> configs;
 
         private void OnEnable()
         {
@@ -28,19 +29,29 @@ namespace ECS.Config
         [Button]
         public void LoadAllConfigs()
         {
-            configs ??= new List<ConfigBase<IIndex>>();
-            configs.Clear();
+            configs ??= new List<ConfigBase>();
+            configs.Clear();   
             var handles = Addressables.LoadAssetsAsync<ScriptableObject>(label, t =>
             {
-                if (t is ConfigBase<IIndex> config)
+                if (t is ConfigBase config)
                 {
                     configs.Add(config);
                 }
             });
+            handles.WaitForCompletion();
             
             foreach (var config in configs)
             {
                 config.FillDictionary();
+            }
+        }
+
+        public void Init(ConfigContext contexts)
+        {
+            LoadAllConfigs();
+            foreach (var config in configs)
+            {
+                config.InitConfig(contexts);
             }
         }
     }

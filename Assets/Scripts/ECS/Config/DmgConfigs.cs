@@ -8,6 +8,10 @@ namespace ECS.Config
     [CreateAssetMenu(fileName = nameof(DmgConfigs), menuName = "GameConfig/DmgConfigs")]
     public class DmgConfigs : ConfigBase<DmgConfig>
     {
+        public override void InitConfig(ConfigContext context)
+        {
+            context.SetDmgConfigs(this, null);
+        }
     }
 
     [Serializable]

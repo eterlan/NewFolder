@@ -285,6 +285,7 @@ namespace Cysharp.Threading.Tasks
             return dest.ToArray();
         }
 
+        //[runtime]
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         static void Init()
         {
@@ -393,6 +394,7 @@ namespace Cysharp.Threading.Tasks
 
         public static void Initialize(ref PlayerLoopSystem playerLoop, InjectPlayerLoopTimings injectTimings = InjectPlayerLoopTimings.All)
         {
+            Debug.Log("Init");
 #if UNITY_2020_2_OR_NEWER
             yielders = new ContinuationQueue[16];
             runners = new PlayerLoopRunner[16];

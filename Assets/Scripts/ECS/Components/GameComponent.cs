@@ -114,7 +114,7 @@ namespace ECS.Components
     }
 
     [Game]
-    public class DamageableComponent : IComponent
+    public class InvincibleComponent : IComponent
     {
         
     }

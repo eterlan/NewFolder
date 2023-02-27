@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DmgConfigs
   m_EditorClassIdentifier: 
   configItems:
-  - <id>k__BackingField: 1
+  - <id>k__BackingField: 0
     vfxName: 
     type: 0
     count: 1

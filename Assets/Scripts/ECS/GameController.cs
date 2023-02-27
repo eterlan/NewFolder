@@ -33,7 +33,7 @@ namespace ECS
         private void Update()
         {
             m_systems.Execute();
-            m_systems.Cleanup(); 
+            m_systems.Cleanup();
         }
 
         private Systems CreateSystems(Contexts contexts)
@@ -44,7 +44,9 @@ namespace ECS
                                          .Add(new Player(contexts))
                                          .Add(new Chase(contexts))
                                          .Add(new Collision(contexts))
+                                         .Add(new Dmg(contexts))
                                          .Add(new Features.Test(contexts))
+
                                          .Add(new GameCleanupSystems(contexts))
                                          .Add(new InputCleanupSystems(contexts));
         }

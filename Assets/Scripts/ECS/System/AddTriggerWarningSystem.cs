@@ -22,11 +22,10 @@ namespace ECS.System
 
         protected override bool Filter(GameEntity entity)
         {
-            Debug.Log("Trigger");
             var satisfied = entity.isTrigger && entity.hasView;
             if (!satisfied)
             {
-                Debug.Log("not satisfied");
+                Debug.Log("not satisfied"); // JUST FOR TEST 看看会不会有不满足的
             }
 
             return satisfied;

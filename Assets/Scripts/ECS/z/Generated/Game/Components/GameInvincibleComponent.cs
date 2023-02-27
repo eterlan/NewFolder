@@ -8,18 +8,18 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly ECS.Components.DamageableComponent damageableComponent = new ECS.Components.DamageableComponent();
+    static readonly ECS.Components.InvincibleComponent invincibleComponent = new ECS.Components.InvincibleComponent();
 
-    public bool isDamageable {
-        get { return HasComponent(GameComponentsLookup.Damageable); }
+    public bool isInvincible {
+        get { return HasComponent(GameComponentsLookup.Invincible); }
         set {
-            if (value != isDamageable) {
-                var index = GameComponentsLookup.Damageable;
+            if (value != isInvincible) {
+                var index = GameComponentsLookup.Invincible;
                 if (value) {
                     var componentPool = GetComponentPool(index);
                     var component = componentPool.Count > 0
                             ? componentPool.Pop()
-                            : damageableComponent;
+                            : invincibleComponent;
 
                     AddComponent(index, component);
                 } else {
@@ -40,17 +40,17 @@ public partial class GameEntity {
 //------------------------------------------------------------------------------
 public sealed partial class GameMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherDamageable;
+    static Entitas.IMatcher<GameEntity> _matcherInvincible;
 
-    public static Entitas.IMatcher<GameEntity> Damageable {
+    public static Entitas.IMatcher<GameEntity> Invincible {
         get {
-            if (_matcherDamageable == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.Damageable);
+            if (_matcherInvincible == null) {
+                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.Invincible);
                 matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherDamageable = matcher;
+                _matcherInvincible = matcher;
             }
 
-            return _matcherDamageable;
+            return _matcherInvincible;
         }
     }
 }

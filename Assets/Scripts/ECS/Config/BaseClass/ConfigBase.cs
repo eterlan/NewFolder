@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using ECS.Utility;
 using Sirenix.OdinInspector;
@@ -21,7 +22,7 @@ namespace ECS.Config
         {
             if (!m_configItemDict.TryGetValue(key, out item))
             {
-                Debug.LogWarning($"找不到id为: {key} 的 {nameof(T)}");
+                Debug.LogWarning($"找不到id为: {key} 的 {typeof(T).Name}");
                 return false;
             }
 
@@ -77,8 +78,9 @@ namespace ECS.Config
             var msg = "";
             msg = TryFillDictionary() ? $"配置表: {this} 成功加载{m_configItemDict.Count}条数据" 
                 : $"加载失败, 请查看配置表: {this}是否有冲突id";
-                
-            Debug.Log(msg);
+
+            throw new Exception();
+            Debug.Log(msg); 
         }
         
         private bool ValidateConflict()

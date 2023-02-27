@@ -28,7 +28,6 @@ namespace ECS.System
 
         protected override bool Filter(GameEntity entity)
         {
-            Debug.Log("DMG Trigger");
             return entity.hasDmgCreator;
         }
 
@@ -59,7 +58,7 @@ namespace ECS.System
 
             var otherEntity = (GameEntity)col.gameObject.GetEntityLink().entity;
 
-            if (!otherEntity.isDamageable)
+            if (otherEntity.isInvincible)
             {
                 CyLog.Log($"Entity: {otherEntity.creationIndex}碰到了无法受伤的{col.gameObject}");
                 return;

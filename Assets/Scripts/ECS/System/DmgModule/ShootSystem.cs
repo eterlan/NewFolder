@@ -53,6 +53,8 @@ namespace ECS.System
                     e.AddPosition(playerPos, playerPos);
                     e.AddMoveTarget(targetPos);
                     e.AddMoveSpeed(weaponInfo.velocity);
+                    e.isTrigger = true;
+                    e.AddDmgCreator(weaponInfo.dmgID);
 
                     var interval = Mathf.RoundToInt(weaponInfo.shootInterval * 1000);
                     await UniTask.Delay(interval);

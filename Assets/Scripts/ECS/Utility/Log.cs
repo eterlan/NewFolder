@@ -4,7 +4,7 @@ namespace ECS.Utility
 {
     public class CyLog
     {
-        public static bool enable = false;
+        public static bool enable = true;
 
         public static void Log(object message)
         {

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Entitas;
+using UnityEngine;
 using NotImplementedException = System.NotImplementedException;
 
 namespace ECS.System
@@ -20,6 +21,7 @@ namespace ECS.System
 
         protected override bool Filter(InputEntity entity)
         {
+            Debug.Log("add");
             return entity.hasScheduleDmg;
         }
 

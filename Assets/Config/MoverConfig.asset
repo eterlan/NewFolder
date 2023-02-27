@@ -23,4 +23,4 @@ MonoBehaviour:
     mp: 100
     moveSpeed: 5
     spawnInterval: 0.2
-    spawnAmountEachTime: 100
+    spawnAmountEachTime: 1

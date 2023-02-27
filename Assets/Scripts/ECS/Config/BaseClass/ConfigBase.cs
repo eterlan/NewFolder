@@ -79,8 +79,7 @@ namespace ECS.Config
             msg = TryFillDictionary() ? $"配置表: {this} 成功加载{m_configItemDict.Count}条数据" 
                 : $"加载失败, 请查看配置表: {this}是否有冲突id";
 
-            throw new Exception();
-            Debug.Log(msg); 
+            Debug.Log(msg);  
         }
         
         private bool ValidateConflict()

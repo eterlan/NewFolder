@@ -1,8 +1,8 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using ECS.Components;
-using ECS.Config;
+using Entitas;
+using Entitas.Unity;
+using Entitas.VisualDebugging.Unity.Editor;
+using Sirenix.Utilities.Editor;
 using UnityEngine;
 
 namespace ECS.Utility
@@ -28,6 +28,25 @@ namespace ECS.Utility
             }
 
             return duplicate;
+        }
+
+        public static GameObject CreateLinkedGameObject(this GameEntity e, string name = "")
+        {
+            var context = Contexts.sharedInstance.game;
+            name = name.IsNullOrEmpty() ? e.id.value.ToString() : name;
+            var go        = new GameObject(name);
+            go.transform.SetParent(context.viewRoot.position, false);
+            e.AddView(go);
+            go.Link(e);
+            return go;
+        }
+
+        public static void DestroyLinkedGameObject(this GameEntity e)
+        {
+            var go = e.view.gameObject;
+            go.Unlink();
+            e.Destroy();
+            Object.Destroy(go);
         }
     }
 }

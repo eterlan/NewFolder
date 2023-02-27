@@ -6,7 +6,7 @@ namespace ECS.Features
     {
         public Test(Contexts ctx) : base("Test")
         {
-            Add(new DestroySystem(ctx.input));
+            Add(new DestroySystem(ctx.game));
         }
     }
 }

@@ -7,7 +7,7 @@ namespace ECS.System
 {
     public class AddSpriteSystem : ReactiveSystem<GameEntity>
     {
-
+        
 
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
         {

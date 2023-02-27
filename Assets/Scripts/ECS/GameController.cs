@@ -18,7 +18,7 @@ namespace ECS
         private Contexts      m_contexts;
         private Systems       m_systems;
 
-        private async void Awake()
+        private void Awake()
         {
             m_contexts = Contexts.sharedInstance;
             m_contexts.Reset();

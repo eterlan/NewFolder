@@ -16,8 +16,8 @@ MonoBehaviour:
   - <id>k__BackingField: 0
     vfxName: 
     type: 0
-    count: 1
-    interval: 1
+    count: 3
+    interval: 0.2
     dmgValue: 5
   - <id>k__BackingField: 2
     vfxName: 

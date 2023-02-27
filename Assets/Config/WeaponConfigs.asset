@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: WeaponConfigs
   m_EditorClassIdentifier: 
   configItems:
-  - spriteRef:
+  - dmgID: 0
+    spriteRef:
       m_AssetGUID: 10ee401cfc2207e46ab6edd7884ea682
       m_SubObjectName: Bullet
       m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
@@ -21,4 +22,4 @@ MonoBehaviour:
       m_EditorAssetChanged: 1
     shootInterval: 0.1
     velocity: 50
-    range: 200
+    range: 50

@@ -118,4 +118,16 @@ namespace ECS.Components
     {
         
     }
+
+    [Game]
+    public class Name : IComponent
+    {
+        public string value;
+    }
+
+    [Game]
+    public class DestroyOnMoveComplete : IComponent
+    {
+        
+    }
 }

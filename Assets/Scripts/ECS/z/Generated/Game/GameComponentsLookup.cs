@@ -9,30 +9,33 @@
 public static class GameComponentsLookup {
 
     public const int Buff = 0;
-    public const int Direction = 1;
-    public const int DmgCreator = 2;
-    public const int Equipment = 3;
-    public const int Health = 4;
-    public const int Id = 5;
-    public const int Invincible = 6;
-    public const int MoveComplete = 7;
-    public const int Mover = 8;
-    public const int MoveSpeed = 9;
-    public const int MoveTarget = 10;
-    public const int Mp = 11;
-    public const int NeedView = 12;
-    public const int Position = 13;
-    public const int Sprite = 14;
-    public const int TagPlayer = 15;
-    public const int Trigger = 16;
-    public const int View = 17;
-    public const int ViewRoot = 18;
-    public const int Weapon = 19;
+    public const int DestroyOnMoveComplete = 1;
+    public const int Direction = 2;
+    public const int DmgCreator = 3;
+    public const int Equipment = 4;
+    public const int Health = 5;
+    public const int Id = 6;
+    public const int Invincible = 7;
+    public const int MoveComplete = 8;
+    public const int Mover = 9;
+    public const int MoveSpeed = 10;
+    public const int MoveTarget = 11;
+    public const int Mp = 12;
+    public const int Name = 13;
+    public const int NeedView = 14;
+    public const int Position = 15;
+    public const int Sprite = 16;
+    public const int TagPlayer = 17;
+    public const int Trigger = 18;
+    public const int View = 19;
+    public const int ViewRoot = 20;
+    public const int Weapon = 21;
 
-    public const int TotalComponents = 20;
+    public const int TotalComponents = 22;
 
     public static readonly string[] componentNames = {
         "Buff",
+        "DestroyOnMoveComplete",
         "Direction",
         "DmgCreator",
         "Equipment",
@@ -44,6 +47,7 @@ public static class GameComponentsLookup {
         "MoveSpeed",
         "MoveTarget",
         "Mp",
+        "Name",
         "NeedView",
         "Position",
         "Sprite",
@@ -56,6 +60,7 @@ public static class GameComponentsLookup {
 
     public static readonly System.Type[] componentTypes = {
         typeof(ECS.Components.Buff),
+        typeof(ECS.Components.DestroyOnMoveComplete),
         typeof(ECS.Components.DirectionComponent),
         typeof(ECS.Components.DmgCreator),
         typeof(ECS.Components.Equipment),
@@ -67,6 +72,7 @@ public static class GameComponentsLookup {
         typeof(ECS.Components.MoveSpeedComponent),
         typeof(ECS.Components.MoveTargetComponent),
         typeof(ECS.Components.MpComponent),
+        typeof(ECS.Components.Name),
         typeof(ECS.Components.NeedViewComponent),
         typeof(ECS.Components.PositionComponent),
         typeof(ECS.Components.SpriteComponent),

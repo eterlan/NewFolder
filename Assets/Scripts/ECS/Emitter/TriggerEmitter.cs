@@ -17,7 +17,6 @@ namespace ECS.Emitter
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            Debug.Log("Triggered");
             OnTriggerEnter?.Invoke(col);
             
         }

@@ -27,9 +27,6 @@ namespace ECS.Config
         [ValueDropdown(nameof(GetAllModifiableState))]
         public string stateName;
 
-        
-
-
         #region Odin
         private List<string> GetAllModifiableState()
         {

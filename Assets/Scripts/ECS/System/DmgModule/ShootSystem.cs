@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using ECS.Utility;
 using Entitas;
 using UnityEngine;
 using NotImplementedException = System.NotImplementedException;
@@ -55,6 +56,8 @@ namespace ECS.System
                     e.AddMoveSpeed(weaponInfo.velocity);
                     e.isTrigger = true;
                     e.AddDmgCreator(weaponInfo.dmgID);
+                    e.CreateLinkedGameObject();
+                    e.isDestroyOnMoveComplete = true;
 
                     var interval = Mathf.RoundToInt(weaponInfo.shootInterval * 1000);
                     await UniTask.Delay(interval);

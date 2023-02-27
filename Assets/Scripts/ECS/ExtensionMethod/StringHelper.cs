@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 
-public static class StringHelper
+public static class StringEx
 {
         public static string ToUpperFirst(this string source)
     {

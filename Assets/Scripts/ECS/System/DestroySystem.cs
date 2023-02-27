@@ -1,51 +1,35 @@
 using System.Collections.Generic;
+using ECS.Utility;
 using Entitas;
+using Entitas.Unity;
 using UnityEngine;
 using NotImplementedException = System.NotImplementedException;
 
 namespace ECS.System
 {
-    public class DestroySystem : ReactiveSystem<InputEntity>
+    public class DestroySystem : ReactiveSystem<GameEntity>
     {
-        public DestroySystem(IContext<InputEntity> context) : base(context)
+        public DestroySystem(IContext<GameEntity> context) : base(context)
         {
         }
 
-        protected override ICollector<InputEntity> GetTrigger(IContext<InputEntity> context)
+        protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
         {
-            return context.CreateCollector(InputMatcher.TestDestroy.Removed());
+            return context.CreateCollector(GameMatcher.AllOf(GameMatcher.MoveComplete, GameMatcher.DestroyOnMoveComplete));
         }
 
-        protected override bool Filter(InputEntity entity)
+        protected override bool Filter(GameEntity entity)
         {
+            Debug.Log("true");
             return true;
         }
 
-        protected override void Execute(List<InputEntity> entities)
+        protected override void Execute(List<GameEntity> entities)
         {
-            Debug.Log("component removed");
-        }
-    }
-    
-    public class CreateSystem : ReactiveSystem<InputEntity>
-    {
-        public CreateSystem(IContext<InputEntity> context) : base(context)
-        {
-        }
-
-        protected override ICollector<InputEntity> GetTrigger(IContext<InputEntity> context)
-        {
-            return context.CreateCollector(InputMatcher.TestDestroy.Added());
-        }
-
-        protected override bool Filter(InputEntity entity)
-        {
-            return true;
-        }
-
-        protected override void Execute(List<InputEntity> entities)
-        {
-            Debug.Log("component added");
+            for (var i = 0; i < entities.Count; i++)
+            {
+                entities[i].DestroyLinkedGameObject();
+            }
         }
     }
 }

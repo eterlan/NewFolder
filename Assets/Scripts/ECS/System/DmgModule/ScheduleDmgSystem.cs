@@ -21,7 +21,6 @@ namespace ECS.System
 
         protected override bool Filter(InputEntity entity)
         {
-            Debug.Log("add");
             return entity.hasScheduleDmg;
         }
 
@@ -29,18 +28,22 @@ namespace ECS.System
         {
             foreach (var entity in entities)
             {
-                var dmgID = entity.scheduleDmg.dmgID;
+                var dmgID = entity.scheduleDmg.dmgID; 
                 if (!m_contexts.config.dmgConfigs.configs.TryGetItem(dmgID, out var dmgConfig))
                     continue;
                 var timerE = m_contexts.input.CreateEntity();
 
+                var targetEntityID = entity.scheduleDmg.entityID;
                 CreateDmg();
+                if (dmgConfig.count - 1 <= 0)
+                    return;
                 timerE.AddTimer(m_contexts.input.time.elapsedTime, dmgConfig.count, 0, dmgConfig.interval, CreateDmg);
 
                 void CreateDmg()
                 {
                     var dmgE = m_contexts.input.CreateEntity();
-                    dmgE.AddDmg(dmgID, entity.scheduleDmg.entityID);
+
+                    dmgE.AddDmg(dmgID, targetEntityID);
                 }
             }
         }

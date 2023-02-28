@@ -8,19 +8,19 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public ECS.Components.WeaponComponent weapon { get { return (ECS.Components.WeaponComponent)GetComponent(GameComponentsLookup.Weapon); } }
+    public ECS.C.WeaponComponent weapon { get { return (ECS.C.WeaponComponent)GetComponent(GameComponentsLookup.Weapon); } }
     public bool hasWeapon { get { return HasComponent(GameComponentsLookup.Weapon); } }
 
     public void AddWeapon(int newWeaponID) {
         var index = GameComponentsLookup.Weapon;
-        var component = (ECS.Components.WeaponComponent)CreateComponent(index, typeof(ECS.Components.WeaponComponent));
+        var component = (ECS.C.WeaponComponent)CreateComponent(index, typeof(ECS.C.WeaponComponent));
         component.weaponID = newWeaponID;
         AddComponent(index, component);
     }
 
     public void ReplaceWeapon(int newWeaponID) {
         var index = GameComponentsLookup.Weapon;
-        var component = (ECS.Components.WeaponComponent)CreateComponent(index, typeof(ECS.Components.WeaponComponent));
+        var component = (ECS.C.WeaponComponent)CreateComponent(index, typeof(ECS.C.WeaponComponent));
         component.weaponID = newWeaponID;
         ReplaceComponent(index, component);
     }

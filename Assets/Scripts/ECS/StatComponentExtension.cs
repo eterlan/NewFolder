@@ -1,5 +1,5 @@
 using System;
-using ECS.Components;
+using ECS.C;
 
 namespace ECS
 {

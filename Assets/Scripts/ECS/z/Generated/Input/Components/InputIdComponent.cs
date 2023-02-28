@@ -8,19 +8,19 @@
 //------------------------------------------------------------------------------
 public partial class InputEntity {
 
-    public ECS.Components.IdComponent id { get { return (ECS.Components.IdComponent)GetComponent(InputComponentsLookup.Id); } }
+    public ECS.C.IdComponent id { get { return (ECS.C.IdComponent)GetComponent(InputComponentsLookup.Id); } }
     public bool hasId { get { return HasComponent(InputComponentsLookup.Id); } }
 
     public void AddId(int newValue) {
         var index = InputComponentsLookup.Id;
-        var component = (ECS.Components.IdComponent)CreateComponent(index, typeof(ECS.Components.IdComponent));
+        var component = (ECS.C.IdComponent)CreateComponent(index, typeof(ECS.C.IdComponent));
         component.value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceId(int newValue) {
         var index = InputComponentsLookup.Id;
-        var component = (ECS.Components.IdComponent)CreateComponent(index, typeof(ECS.Components.IdComponent));
+        var component = (ECS.C.IdComponent)CreateComponent(index, typeof(ECS.C.IdComponent));
         component.value = newValue;
         ReplaceComponent(index, component);
     }

@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly ECS.Components.TriggerComponent triggerComponent = new ECS.Components.TriggerComponent();
+    static readonly ECS.C.TriggerComponent triggerComponent = new ECS.C.TriggerComponent();
 
     public bool isTrigger {
         get { return HasComponent(GameComponentsLookup.Trigger); }

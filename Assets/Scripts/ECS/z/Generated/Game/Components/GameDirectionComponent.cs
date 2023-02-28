@@ -8,19 +8,19 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public ECS.Components.DirectionComponent direction { get { return (ECS.Components.DirectionComponent)GetComponent(GameComponentsLookup.Direction); } }
+    public ECS.C.DirectionComponent direction { get { return (ECS.C.DirectionComponent)GetComponent(GameComponentsLookup.Direction); } }
     public bool hasDirection { get { return HasComponent(GameComponentsLookup.Direction); } }
 
     public void AddDirection(float newValue) {
         var index = GameComponentsLookup.Direction;
-        var component = (ECS.Components.DirectionComponent)CreateComponent(index, typeof(ECS.Components.DirectionComponent));
+        var component = (ECS.C.DirectionComponent)CreateComponent(index, typeof(ECS.C.DirectionComponent));
         component.value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceDirection(float newValue) {
         var index = GameComponentsLookup.Direction;
-        var component = (ECS.Components.DirectionComponent)CreateComponent(index, typeof(ECS.Components.DirectionComponent));
+        var component = (ECS.C.DirectionComponent)CreateComponent(index, typeof(ECS.C.DirectionComponent));
         component.value = newValue;
         ReplaceComponent(index, component);
     }

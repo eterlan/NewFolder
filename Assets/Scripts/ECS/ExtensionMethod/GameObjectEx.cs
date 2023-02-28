@@ -2,7 +2,7 @@
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace ECS.UtilAndEx
+namespace ECS.ExtensionMethod
 {
     public static class GameObjectEx
     {

@@ -9,32 +9,38 @@
 public static class GameComponentsLookup {
 
     public const int Buff = 0;
-    public const int DestroyOnMoveComplete = 1;
-    public const int Direction = 2;
-    public const int DmgCreator = 3;
-    public const int Equipment = 4;
-    public const int Health = 5;
-    public const int Id = 6;
-    public const int Invincible = 7;
-    public const int MoveComplete = 8;
-    public const int Mover = 9;
-    public const int MoveSpeed = 10;
-    public const int MoveTarget = 11;
-    public const int Mp = 12;
-    public const int Name = 13;
-    public const int NeedView = 14;
-    public const int Position = 15;
-    public const int Sprite = 16;
-    public const int TagPlayer = 17;
-    public const int Trigger = 18;
-    public const int View = 19;
-    public const int ViewRoot = 20;
-    public const int Weapon = 21;
+    public const int Destroy = 1;
+    public const int DestroyOnMoveComplete = 2;
+    public const int Direction = 3;
+    public const int DmgCreator = 4;
+    public const int Equipment = 5;
+    public const int Health = 6;
+    public const int Id = 7;
+    public const int Invincible = 8;
+    public const int MonoMapper = 9;
+    public const int MoveComplete = 10;
+    public const int Mover = 11;
+    public const int MoveSpeed = 12;
+    public const int MoveTarget = 13;
+    public const int Mp = 14;
+    public const int Name = 15;
+    public const int NeedView = 16;
+    public const int PosFromViewGroup = 17;
+    public const int Position = 18;
+    public const int Sprite = 19;
+    public const int StateDeath = 20;
+    public const int TagPlayer = 21;
+    public const int Trigger = 22;
+    public const int View = 23;
+    public const int ViewRoot = 24;
+    public const int Weapon = 25;
+    public const int WeaponPos = 26;
 
-    public const int TotalComponents = 22;
+    public const int TotalComponents = 27;
 
     public static readonly string[] componentNames = {
         "Buff",
+        "Destroy",
         "DestroyOnMoveComplete",
         "Direction",
         "DmgCreator",
@@ -42,6 +48,7 @@ public static class GameComponentsLookup {
         "Health",
         "Id",
         "Invincible",
+        "MonoMapper",
         "MoveComplete",
         "Mover",
         "MoveSpeed",
@@ -49,37 +56,45 @@ public static class GameComponentsLookup {
         "Mp",
         "Name",
         "NeedView",
+        "PosFromViewGroup",
         "Position",
         "Sprite",
+        "StateDeath",
         "TagPlayer",
         "Trigger",
         "View",
         "ViewRoot",
-        "Weapon"
+        "Weapon",
+        "WeaponPos"
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(ECS.Components.Buff),
-        typeof(ECS.Components.DestroyOnMoveComplete),
-        typeof(ECS.Components.DirectionComponent),
-        typeof(ECS.Components.DmgCreator),
-        typeof(ECS.Components.Equipment),
-        typeof(ECS.Components.HealthComponent),
-        typeof(ECS.Components.IdComponent),
-        typeof(ECS.Components.InvincibleComponent),
-        typeof(ECS.Components.MoveCompleteComponent),
-        typeof(ECS.Components.MoverComponent),
-        typeof(ECS.Components.MoveSpeedComponent),
-        typeof(ECS.Components.MoveTargetComponent),
-        typeof(ECS.Components.MpComponent),
-        typeof(ECS.Components.Name),
-        typeof(ECS.Components.NeedViewComponent),
-        typeof(ECS.Components.PositionComponent),
-        typeof(ECS.Components.SpriteComponent),
-        typeof(ECS.Components.TagPlayer),
-        typeof(ECS.Components.TriggerComponent),
-        typeof(ECS.Components.ViewComponent),
-        typeof(ECS.Components.ViewRoot),
-        typeof(ECS.Components.WeaponComponent)
+        typeof(ECS.C.Buff),
+        typeof(ECS.C.Destroy),
+        typeof(ECS.C.DestroyOnMoveComplete),
+        typeof(ECS.C.DirectionComponent),
+        typeof(ECS.C.DmgCreator),
+        typeof(ECS.C.Equipment),
+        typeof(ECS.C.HealthComponent),
+        typeof(ECS.C.IdComponent),
+        typeof(ECS.C.InvincibleComponent),
+        typeof(ECS.C.MonoMapper),
+        typeof(ECS.C.MoveCompleteComponent),
+        typeof(ECS.C.MoverComponent),
+        typeof(ECS.C.MoveSpeedComponent),
+        typeof(ECS.C.MoveTargetComponent),
+        typeof(ECS.C.MpComponent),
+        typeof(ECS.C.Name),
+        typeof(ECS.C.NeedViewComponent),
+        typeof(ECS.C.PosFromViewGroup),
+        typeof(ECS.C.PositionComponent),
+        typeof(ECS.C.SpriteComponent),
+        typeof(ECS.C.StateDeath),
+        typeof(ECS.C.TagPlayer),
+        typeof(ECS.C.TriggerComponent),
+        typeof(ECS.C.ViewComponent),
+        typeof(ECS.C.ViewRoot),
+        typeof(ECS.C.WeaponComponent),
+        typeof(ECS.C.WeaponPos)
     };
 }

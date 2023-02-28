@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 public partial interface IIdEntity {
 
-    ECS.Components.IdComponent id { get; }
+    ECS.C.IdComponent id { get; }
     bool hasId { get; }
 
     void AddId(int newValue);

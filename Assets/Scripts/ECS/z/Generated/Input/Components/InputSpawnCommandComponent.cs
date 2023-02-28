@@ -9,12 +9,12 @@
 public partial class InputContext {
 
     public InputEntity spawnCommandEntity { get { return GetGroup(InputMatcher.SpawnCommand).GetSingleEntity(); } }
-    public ECS.Components.SpawnCommand spawnCommand { get { return spawnCommandEntity.spawnCommand; } }
+    public ECS.C.SpawnCommand spawnCommand { get { return spawnCommandEntity.spawnCommand; } }
     public bool hasSpawnCommand { get { return spawnCommandEntity != null; } }
 
     public InputEntity SetSpawnCommand(int newCount) {
         if (hasSpawnCommand) {
-            throw new Entitas.EntitasException("Could not set SpawnCommand!\n" + this + " already has an entity with ECS.Components.SpawnCommand!",
+            throw new Entitas.EntitasException("Could not set SpawnCommand!\n" + this + " already has an entity with ECS.C.SpawnCommand!",
                 "You should check if the context already has a spawnCommandEntity before setting it or use context.ReplaceSpawnCommand().");
         }
         var entity = CreateEntity();
@@ -46,19 +46,19 @@ public partial class InputContext {
 //------------------------------------------------------------------------------
 public partial class InputEntity {
 
-    public ECS.Components.SpawnCommand spawnCommand { get { return (ECS.Components.SpawnCommand)GetComponent(InputComponentsLookup.SpawnCommand); } }
+    public ECS.C.SpawnCommand spawnCommand { get { return (ECS.C.SpawnCommand)GetComponent(InputComponentsLookup.SpawnCommand); } }
     public bool hasSpawnCommand { get { return HasComponent(InputComponentsLookup.SpawnCommand); } }
 
     public void AddSpawnCommand(int newCount) {
         var index = InputComponentsLookup.SpawnCommand;
-        var component = (ECS.Components.SpawnCommand)CreateComponent(index, typeof(ECS.Components.SpawnCommand));
+        var component = (ECS.C.SpawnCommand)CreateComponent(index, typeof(ECS.C.SpawnCommand));
         component.count = newCount;
         AddComponent(index, component);
     }
 
     public void ReplaceSpawnCommand(int newCount) {
         var index = InputComponentsLookup.SpawnCommand;
-        var component = (ECS.Components.SpawnCommand)CreateComponent(index, typeof(ECS.Components.SpawnCommand));
+        var component = (ECS.C.SpawnCommand)CreateComponent(index, typeof(ECS.C.SpawnCommand));
         component.count = newCount;
         ReplaceComponent(index, component);
     }

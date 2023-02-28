@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly ECS.Components.InvincibleComponent invincibleComponent = new ECS.Components.InvincibleComponent();
+    static readonly ECS.C.InvincibleComponent invincibleComponent = new ECS.C.InvincibleComponent();
 
     public bool isInvincible {
         get { return HasComponent(GameComponentsLookup.Invincible); }

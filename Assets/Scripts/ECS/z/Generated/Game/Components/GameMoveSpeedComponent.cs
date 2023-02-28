@@ -8,19 +8,19 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public ECS.Components.MoveSpeedComponent moveSpeed { get { return (ECS.Components.MoveSpeedComponent)GetComponent(GameComponentsLookup.MoveSpeed); } }
+    public ECS.C.MoveSpeedComponent moveSpeed { get { return (ECS.C.MoveSpeedComponent)GetComponent(GameComponentsLookup.MoveSpeed); } }
     public bool hasMoveSpeed { get { return HasComponent(GameComponentsLookup.MoveSpeed); } }
 
     public void AddMoveSpeed(float newValue) {
         var index = GameComponentsLookup.MoveSpeed;
-        var component = (ECS.Components.MoveSpeedComponent)CreateComponent(index, typeof(ECS.Components.MoveSpeedComponent));
+        var component = (ECS.C.MoveSpeedComponent)CreateComponent(index, typeof(ECS.C.MoveSpeedComponent));
         component.value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceMoveSpeed(float newValue) {
         var index = GameComponentsLookup.MoveSpeed;
-        var component = (ECS.Components.MoveSpeedComponent)CreateComponent(index, typeof(ECS.Components.MoveSpeedComponent));
+        var component = (ECS.C.MoveSpeedComponent)CreateComponent(index, typeof(ECS.C.MoveSpeedComponent));
         component.value = newValue;
         ReplaceComponent(index, component);
     }

@@ -1,11 +1,9 @@
-using System.Collections.Generic;
 using Entitas;
-using Entitas.Unity;
 using UnityEngine;
 
 namespace ECS.System
 {
-    public class AddViewSystem :IInitializeSystem
+    public class AddViewRootSystem :IInitializeSystem
     {
         private readonly GameContext m_context;
     
@@ -30,7 +28,7 @@ namespace ECS.System
             // }
         // }
 
-        public AddViewSystem(GameContext context)
+        public AddViewRootSystem(GameContext context)
         {
             m_context = context;
         }

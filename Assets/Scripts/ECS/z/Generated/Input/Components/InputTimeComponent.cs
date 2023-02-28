@@ -9,12 +9,12 @@
 public partial class InputContext {
 
     public InputEntity timeEntity { get { return GetGroup(InputMatcher.Time).GetSingleEntity(); } }
-    public ECS.Components.TimeComponent time { get { return timeEntity.time; } }
+    public ECS.C.TimeComponent time { get { return timeEntity.time; } }
     public bool hasTime { get { return timeEntity != null; } }
 
     public InputEntity SetTime(float newElapsedTime, float newDeltaTime, float newTimeScale) {
         if (hasTime) {
-            throw new Entitas.EntitasException("Could not set Time!\n" + this + " already has an entity with ECS.Components.TimeComponent!",
+            throw new Entitas.EntitasException("Could not set Time!\n" + this + " already has an entity with ECS.C.TimeComponent!",
                 "You should check if the context already has a timeEntity before setting it or use context.ReplaceTime().");
         }
         var entity = CreateEntity();
@@ -46,12 +46,12 @@ public partial class InputContext {
 //------------------------------------------------------------------------------
 public partial class InputEntity {
 
-    public ECS.Components.TimeComponent time { get { return (ECS.Components.TimeComponent)GetComponent(InputComponentsLookup.Time); } }
+    public ECS.C.TimeComponent time { get { return (ECS.C.TimeComponent)GetComponent(InputComponentsLookup.Time); } }
     public bool hasTime { get { return HasComponent(InputComponentsLookup.Time); } }
 
     public void AddTime(float newElapsedTime, float newDeltaTime, float newTimeScale) {
         var index = InputComponentsLookup.Time;
-        var component = (ECS.Components.TimeComponent)CreateComponent(index, typeof(ECS.Components.TimeComponent));
+        var component = (ECS.C.TimeComponent)CreateComponent(index, typeof(ECS.C.TimeComponent));
         component.elapsedTime = newElapsedTime;
         component.deltaTime = newDeltaTime;
         component.timeScale = newTimeScale;
@@ -60,7 +60,7 @@ public partial class InputEntity {
 
     public void ReplaceTime(float newElapsedTime, float newDeltaTime, float newTimeScale) {
         var index = InputComponentsLookup.Time;
-        var component = (ECS.Components.TimeComponent)CreateComponent(index, typeof(ECS.Components.TimeComponent));
+        var component = (ECS.C.TimeComponent)CreateComponent(index, typeof(ECS.C.TimeComponent));
         component.elapsedTime = newElapsedTime;
         component.deltaTime = newDeltaTime;
         component.timeScale = newTimeScale;

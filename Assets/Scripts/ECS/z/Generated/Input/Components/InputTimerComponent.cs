@@ -8,12 +8,12 @@
 //------------------------------------------------------------------------------
 public partial class InputEntity {
 
-    public ECS.Components.Timer timer { get { return (ECS.Components.Timer)GetComponent(InputComponentsLookup.Timer); } }
+    public ECS.C.Timer timer { get { return (ECS.C.Timer)GetComponent(InputComponentsLookup.Timer); } }
     public bool hasTimer { get { return HasComponent(InputComponentsLookup.Timer); } }
 
     public void AddTimer(float newStartTime, float newCount, float newElapsedTime, float newDuration, System.Action newCallback) {
         var index = InputComponentsLookup.Timer;
-        var component = (ECS.Components.Timer)CreateComponent(index, typeof(ECS.Components.Timer));
+        var component = (ECS.C.Timer)CreateComponent(index, typeof(ECS.C.Timer));
         component.startTime = newStartTime;
         component.count = newCount;
         component.elapsedTime = newElapsedTime;
@@ -24,7 +24,7 @@ public partial class InputEntity {
 
     public void ReplaceTimer(float newStartTime, float newCount, float newElapsedTime, float newDuration, System.Action newCallback) {
         var index = InputComponentsLookup.Timer;
-        var component = (ECS.Components.Timer)CreateComponent(index, typeof(ECS.Components.Timer));
+        var component = (ECS.C.Timer)CreateComponent(index, typeof(ECS.C.Timer));
         component.startTime = newStartTime;
         component.count = newCount;
         component.elapsedTime = newElapsedTime;

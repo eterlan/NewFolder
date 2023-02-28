@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 public partial class InputEntity {
 
-    static readonly ECS.Components.KeyUpComponent keyUpComponent = new ECS.Components.KeyUpComponent();
+    static readonly ECS.C.KeyUpComponent keyUpComponent = new ECS.C.KeyUpComponent();
 
     public bool isKeyUp {
         get { return HasComponent(InputComponentsLookup.KeyUp); }

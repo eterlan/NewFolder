@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly ECS.Components.NeedViewComponent needViewComponent = new ECS.Components.NeedViewComponent();
+    static readonly ECS.C.NeedViewComponent needViewComponent = new ECS.C.NeedViewComponent();
 
     public bool isNeedView {
         get { return HasComponent(GameComponentsLookup.NeedView); }

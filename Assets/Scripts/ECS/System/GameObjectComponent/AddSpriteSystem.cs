@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using ECS.UtilAndEx;
+using ECS.ExtensionMethod;
 using Entitas;
 using UnityEngine;
 

@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using DesperateDevs.Extensions;
-using ECS.Components;
+using ECS.C;
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
 using Sirenix.OdinInspector;

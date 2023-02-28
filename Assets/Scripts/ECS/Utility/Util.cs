@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using ECS.ExtensionMethod;
 using Entitas;
 using Entitas.Unity;
 using Entitas.VisualDebugging.Unity.Editor;

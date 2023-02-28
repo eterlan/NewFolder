@@ -4,16 +4,15 @@ using Cysharp.Threading.Tasks;
 using ECS.Utility;
 using Entitas;
 using UnityEngine;
-using NotImplementedException = System.NotImplementedException;
 
 namespace ECS.System
 {
-    public class ShootSystem : ReactiveSystem<InputEntity>, ITearDownSystem
+    public class PlayerShootSystem : ReactiveSystem<InputEntity>, ITearDownSystem
     {
         private readonly Contexts                m_contexts;
         private          CancellationTokenSource m_cts;
 
-        public ShootSystem(Contexts contexts) : base(contexts.input)
+        public PlayerShootSystem(Contexts contexts) : base(contexts.input)
         {
             m_contexts = contexts;
         }
@@ -65,6 +64,7 @@ namespace ECS.System
             }
             else
             {
+                if (m_cts is not { IsCancellationRequested: false }) return;
                 m_cts.Cancel();
                 m_cts.Dispose();
             }

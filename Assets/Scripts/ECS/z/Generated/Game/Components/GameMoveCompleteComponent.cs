@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly ECS.Components.MoveCompleteComponent moveCompleteComponent = new ECS.Components.MoveCompleteComponent();
+    static readonly ECS.C.MoveCompleteComponent moveCompleteComponent = new ECS.C.MoveCompleteComponent();
 
     public bool isMoveComplete {
         get { return HasComponent(GameComponentsLookup.MoveComplete); }

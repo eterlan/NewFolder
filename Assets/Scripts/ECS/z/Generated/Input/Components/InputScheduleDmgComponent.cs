@@ -8,12 +8,12 @@
 //------------------------------------------------------------------------------
 public partial class InputEntity {
 
-    public ECS.Components.ScheduleDmgComponent scheduleDmg { get { return (ECS.Components.ScheduleDmgComponent)GetComponent(InputComponentsLookup.ScheduleDmg); } }
+    public ECS.C.ScheduleDmgComponent scheduleDmg { get { return (ECS.C.ScheduleDmgComponent)GetComponent(InputComponentsLookup.ScheduleDmg); } }
     public bool hasScheduleDmg { get { return HasComponent(InputComponentsLookup.ScheduleDmg); } }
 
     public void AddScheduleDmg(int newDmgID, int newEntityID) {
         var index = InputComponentsLookup.ScheduleDmg;
-        var component = (ECS.Components.ScheduleDmgComponent)CreateComponent(index, typeof(ECS.Components.ScheduleDmgComponent));
+        var component = (ECS.C.ScheduleDmgComponent)CreateComponent(index, typeof(ECS.C.ScheduleDmgComponent));
         component.dmgID = newDmgID;
         component.entityID = newEntityID;
         AddComponent(index, component);
@@ -21,7 +21,7 @@ public partial class InputEntity {
 
     public void ReplaceScheduleDmg(int newDmgID, int newEntityID) {
         var index = InputComponentsLookup.ScheduleDmg;
-        var component = (ECS.Components.ScheduleDmgComponent)CreateComponent(index, typeof(ECS.Components.ScheduleDmgComponent));
+        var component = (ECS.C.ScheduleDmgComponent)CreateComponent(index, typeof(ECS.C.ScheduleDmgComponent));
         component.dmgID = newDmgID;
         component.entityID = newEntityID;
         ReplaceComponent(index, component);

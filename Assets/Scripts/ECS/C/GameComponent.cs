@@ -1,8 +1,9 @@
+using System.Collections.Generic;
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
 using UnityEngine;
 
-namespace ECS.Components
+namespace ECS.C
 {
     [Game]
     public class DmgCreator : IComponent
@@ -102,11 +103,9 @@ namespace ECS.Components
     [Game]
     public class WeaponComponent : IComponent
     {
-        public int   weaponID;
+        public int     weaponID;
     }
 
-
-    
     [Game, Cleanup(CleanupMode.RemoveComponent)]
     public class TriggerComponent : IComponent
     {
@@ -130,4 +129,32 @@ namespace ECS.Components
     {
         
     }
+
+    [Game]
+    public class StateDeath : IComponent
+    {
+        
+    }
+
+    [Game]
+    public class Destroy : IComponent
+    {
+        
+    }
+
+    [Game]
+    public class MonoMapper : IComponent
+    {
+        public Dictionary<string, Component> mapper = new ();
+    }
+    public class WeaponPos : IComponent
+    {
+        public Vector2 weaponCarryPoint;
+    }
+
+    public class PosFromViewGroup : IComponent
+    {
+        
+    }
+    // TODO
 }

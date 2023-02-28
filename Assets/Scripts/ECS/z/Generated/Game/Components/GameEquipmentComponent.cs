@@ -8,19 +8,19 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public ECS.Components.Equipment equipment { get { return (ECS.Components.Equipment)GetComponent(GameComponentsLookup.Equipment); } }
+    public ECS.C.Equipment equipment { get { return (ECS.C.Equipment)GetComponent(GameComponentsLookup.Equipment); } }
     public bool hasEquipment { get { return HasComponent(GameComponentsLookup.Equipment); } }
 
     public void AddEquipment(System.Collections.Generic.List<int> newEquipmentIDList) {
         var index = GameComponentsLookup.Equipment;
-        var component = (ECS.Components.Equipment)CreateComponent(index, typeof(ECS.Components.Equipment));
+        var component = (ECS.C.Equipment)CreateComponent(index, typeof(ECS.C.Equipment));
         component.equipmentIDList = newEquipmentIDList;
         AddComponent(index, component);
     }
 
     public void ReplaceEquipment(System.Collections.Generic.List<int> newEquipmentIDList) {
         var index = GameComponentsLookup.Equipment;
-        var component = (ECS.Components.Equipment)CreateComponent(index, typeof(ECS.Components.Equipment));
+        var component = (ECS.C.Equipment)CreateComponent(index, typeof(ECS.C.Equipment));
         component.equipmentIDList = newEquipmentIDList;
         ReplaceComponent(index, component);
     }

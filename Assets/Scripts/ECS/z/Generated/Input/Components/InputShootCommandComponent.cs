@@ -35,7 +35,7 @@ public partial class InputContext {
 //------------------------------------------------------------------------------
 public partial class InputEntity {
 
-    static readonly ECS.Components.ShootCommand shootCommandComponent = new ECS.Components.ShootCommand();
+    static readonly ECS.C.ShootCommand shootCommandComponent = new ECS.C.ShootCommand();
 
     public bool isShootCommand {
         get { return HasComponent(InputComponentsLookup.ShootCommand); }

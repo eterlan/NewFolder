@@ -8,12 +8,12 @@
 //------------------------------------------------------------------------------
 public partial class InputEntity {
 
-    public ECS.Components.CollisionComponent collision { get { return (ECS.Components.CollisionComponent)GetComponent(InputComponentsLookup.Collision); } }
+    public ECS.C.CollisionComponent collision { get { return (ECS.C.CollisionComponent)GetComponent(InputComponentsLookup.Collision); } }
     public bool hasCollision { get { return HasComponent(InputComponentsLookup.Collision); } }
 
     public void AddCollision(int newA, int newB) {
         var index = InputComponentsLookup.Collision;
-        var component = (ECS.Components.CollisionComponent)CreateComponent(index, typeof(ECS.Components.CollisionComponent));
+        var component = (ECS.C.CollisionComponent)CreateComponent(index, typeof(ECS.C.CollisionComponent));
         component.a = newA;
         component.b = newB;
         AddComponent(index, component);
@@ -21,7 +21,7 @@ public partial class InputEntity {
 
     public void ReplaceCollision(int newA, int newB) {
         var index = InputComponentsLookup.Collision;
-        var component = (ECS.Components.CollisionComponent)CreateComponent(index, typeof(ECS.Components.CollisionComponent));
+        var component = (ECS.C.CollisionComponent)CreateComponent(index, typeof(ECS.C.CollisionComponent));
         component.a = newA;
         component.b = newB;
         ReplaceComponent(index, component);

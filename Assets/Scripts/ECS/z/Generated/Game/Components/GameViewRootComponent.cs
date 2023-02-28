@@ -9,12 +9,12 @@
 public partial class GameContext {
 
     public GameEntity viewRootEntity { get { return GetGroup(GameMatcher.ViewRoot).GetSingleEntity(); } }
-    public ECS.Components.ViewRoot viewRoot { get { return viewRootEntity.viewRoot; } }
+    public ECS.C.ViewRoot viewRoot { get { return viewRootEntity.viewRoot; } }
     public bool hasViewRoot { get { return viewRootEntity != null; } }
 
     public GameEntity SetViewRoot(UnityEngine.Transform newPosition) {
         if (hasViewRoot) {
-            throw new Entitas.EntitasException("Could not set ViewRoot!\n" + this + " already has an entity with ECS.Components.ViewRoot!",
+            throw new Entitas.EntitasException("Could not set ViewRoot!\n" + this + " already has an entity with ECS.C.ViewRoot!",
                 "You should check if the context already has a viewRootEntity before setting it or use context.ReplaceViewRoot().");
         }
         var entity = CreateEntity();
@@ -46,19 +46,19 @@ public partial class GameContext {
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public ECS.Components.ViewRoot viewRoot { get { return (ECS.Components.ViewRoot)GetComponent(GameComponentsLookup.ViewRoot); } }
+    public ECS.C.ViewRoot viewRoot { get { return (ECS.C.ViewRoot)GetComponent(GameComponentsLookup.ViewRoot); } }
     public bool hasViewRoot { get { return HasComponent(GameComponentsLookup.ViewRoot); } }
 
     public void AddViewRoot(UnityEngine.Transform newPosition) {
         var index = GameComponentsLookup.ViewRoot;
-        var component = (ECS.Components.ViewRoot)CreateComponent(index, typeof(ECS.Components.ViewRoot));
+        var component = (ECS.C.ViewRoot)CreateComponent(index, typeof(ECS.C.ViewRoot));
         component.position = newPosition;
         AddComponent(index, component);
     }
 
     public void ReplaceViewRoot(UnityEngine.Transform newPosition) {
         var index = GameComponentsLookup.ViewRoot;
-        var component = (ECS.Components.ViewRoot)CreateComponent(index, typeof(ECS.Components.ViewRoot));
+        var component = (ECS.C.ViewRoot)CreateComponent(index, typeof(ECS.C.ViewRoot));
         component.position = newPosition;
         ReplaceComponent(index, component);
     }

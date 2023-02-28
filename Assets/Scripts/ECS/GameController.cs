@@ -1,9 +1,7 @@
 using System;
-using Cysharp.Threading.Tasks;
 using ECS.Config;
+using ECS.ExtensionMethod;
 using ECS.Features;
-using ECS.System;
-using ECS.UtilAndEx;
 using Entitas;
 using UnityEditor;
 using UnityEngine;
@@ -38,17 +36,18 @@ namespace ECS
 
         private Systems CreateSystems(Contexts contexts)
         {
-            return new Feature("Systems").Add(new Time(contexts))
+            return new Feature("Systems").Add(new ExecuteFirstGroup(contexts))
+                                         .Add(new Time(contexts))
                                          .Add(new View(contexts))
                                          .Add(new Movement(contexts))
-                                         .Add(new Player(contexts))
+                                         .Add(new ExecuteMidGroup(contexts))
                                          .Add(new Chase(contexts))
                                          .Add(new Collision(contexts))
                                          .Add(new Dmg(contexts))
-                                         .Add(new Features.Test(contexts))
 
                                          .Add(new GameCleanupSystems(contexts))
-                                         .Add(new InputCleanupSystems(contexts));
+                                         .Add(new InputCleanupSystems(contexts))
+                                         .Add(new CleanUp(contexts));
         }
 
 #if UNITY_EDITOR

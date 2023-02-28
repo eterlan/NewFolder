@@ -9,12 +9,12 @@
 public partial class InputContext {
 
     public InputEntity mousePosEntity { get { return GetGroup(InputMatcher.MousePos).GetSingleEntity(); } }
-    public ECS.Components.MousePosComponent mousePos { get { return mousePosEntity.mousePos; } }
+    public ECS.C.MousePosComponent mousePos { get { return mousePosEntity.mousePos; } }
     public bool hasMousePos { get { return mousePosEntity != null; } }
 
     public InputEntity SetMousePos(UnityEngine.Vector2 newPosWS, UnityEngine.Vector2 newPosCS) {
         if (hasMousePos) {
-            throw new Entitas.EntitasException("Could not set MousePos!\n" + this + " already has an entity with ECS.Components.MousePosComponent!",
+            throw new Entitas.EntitasException("Could not set MousePos!\n" + this + " already has an entity with ECS.C.MousePosComponent!",
                 "You should check if the context already has a mousePosEntity before setting it or use context.ReplaceMousePos().");
         }
         var entity = CreateEntity();
@@ -46,12 +46,12 @@ public partial class InputContext {
 //------------------------------------------------------------------------------
 public partial class InputEntity {
 
-    public ECS.Components.MousePosComponent mousePos { get { return (ECS.Components.MousePosComponent)GetComponent(InputComponentsLookup.MousePos); } }
+    public ECS.C.MousePosComponent mousePos { get { return (ECS.C.MousePosComponent)GetComponent(InputComponentsLookup.MousePos); } }
     public bool hasMousePos { get { return HasComponent(InputComponentsLookup.MousePos); } }
 
     public void AddMousePos(UnityEngine.Vector2 newPosWS, UnityEngine.Vector2 newPosCS) {
         var index = InputComponentsLookup.MousePos;
-        var component = (ECS.Components.MousePosComponent)CreateComponent(index, typeof(ECS.Components.MousePosComponent));
+        var component = (ECS.C.MousePosComponent)CreateComponent(index, typeof(ECS.C.MousePosComponent));
         component.posWS = newPosWS;
         component.posCS = newPosCS;
         AddComponent(index, component);
@@ -59,7 +59,7 @@ public partial class InputEntity {
 
     public void ReplaceMousePos(UnityEngine.Vector2 newPosWS, UnityEngine.Vector2 newPosCS) {
         var index = InputComponentsLookup.MousePos;
-        var component = (ECS.Components.MousePosComponent)CreateComponent(index, typeof(ECS.Components.MousePosComponent));
+        var component = (ECS.C.MousePosComponent)CreateComponent(index, typeof(ECS.C.MousePosComponent));
         component.posWS = newPosWS;
         component.posCS = newPosCS;
         ReplaceComponent(index, component);

@@ -62,13 +62,13 @@ namespace ECS.System
     //     }
     // }
     
-    public class CommandMoveSystem : IExecuteSystem
+    public class PlayerMoveSystem : IExecuteSystem
     {
         private readonly InputContext            m_inputContext;
         private readonly GameContext             m_gameContext;
         private          CancellationTokenSource m_cts;
 
-        public CommandMoveSystem(Contexts context)
+        public PlayerMoveSystem(Contexts context)
         {
             m_gameContext  = context.game;
             m_inputContext = context.input;

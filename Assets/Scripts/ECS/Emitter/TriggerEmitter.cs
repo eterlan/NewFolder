@@ -1,5 +1,5 @@
 using System;
-using ECS.UtilAndEx;
+using ECS.ExtensionMethod;
 using UnityEngine;
 
 namespace ECS.Emitter

@@ -8,12 +8,12 @@
 //------------------------------------------------------------------------------
 public partial class InputEntity {
 
-    public ECS.Components.DmgComponent dmg { get { return (ECS.Components.DmgComponent)GetComponent(InputComponentsLookup.Dmg); } }
+    public ECS.C.DmgComponent dmg { get { return (ECS.C.DmgComponent)GetComponent(InputComponentsLookup.Dmg); } }
     public bool hasDmg { get { return HasComponent(InputComponentsLookup.Dmg); } }
 
     public void AddDmg(int newDmgID, int newEntityID) {
         var index = InputComponentsLookup.Dmg;
-        var component = (ECS.Components.DmgComponent)CreateComponent(index, typeof(ECS.Components.DmgComponent));
+        var component = (ECS.C.DmgComponent)CreateComponent(index, typeof(ECS.C.DmgComponent));
         component.dmgID = newDmgID;
         component.entityID = newEntityID;
         AddComponent(index, component);
@@ -21,7 +21,7 @@ public partial class InputEntity {
 
     public void ReplaceDmg(int newDmgID, int newEntityID) {
         var index = InputComponentsLookup.Dmg;
-        var component = (ECS.Components.DmgComponent)CreateComponent(index, typeof(ECS.Components.DmgComponent));
+        var component = (ECS.C.DmgComponent)CreateComponent(index, typeof(ECS.C.DmgComponent));
         component.dmgID = newDmgID;
         component.entityID = newEntityID;
         ReplaceComponent(index, component);

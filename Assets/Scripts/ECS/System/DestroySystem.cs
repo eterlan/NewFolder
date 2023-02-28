@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using ECS.Utility;
 using Entitas;
 using Entitas.Unity;
@@ -7,28 +6,19 @@ using NotImplementedException = System.NotImplementedException;
 
 namespace ECS.System
 {
-    public class DestroySystem : ReactiveSystem<GameEntity>
+    public class DestroySystem : ICleanupSystem
     {
-        public DestroySystem(IContext<GameEntity> context) : base(context)
-        {
-        }
+        private readonly IGroup<GameEntity> m_destroyGroup;
 
-        protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
+        public DestroySystem(Contexts contexts)
         {
-            return context.CreateCollector(GameMatcher.AllOf(GameMatcher.MoveComplete, GameMatcher.DestroyOnMoveComplete));
+            m_destroyGroup = contexts.game.GetGroup(GameMatcher.Destroy);
         }
-
-        protected override bool Filter(GameEntity entity)
+        public void Cleanup()
         {
-            Debug.Log("true");
-            return true;
-        }
-
-        protected override void Execute(List<GameEntity> entities)
-        {
-            for (var i = 0; i < entities.Count; i++)
+            foreach (var entity in m_destroyGroup.GetEntities())
             {
-                entities[i].DestroyLinkedGameObject();
+                entity.DestroyLinkedGameObject();
             }
         }
     }

@@ -8,19 +8,19 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public ECS.Components.DmgCreator dmgCreator { get { return (ECS.Components.DmgCreator)GetComponent(GameComponentsLookup.DmgCreator); } }
+    public ECS.C.DmgCreator dmgCreator { get { return (ECS.C.DmgCreator)GetComponent(GameComponentsLookup.DmgCreator); } }
     public bool hasDmgCreator { get { return HasComponent(GameComponentsLookup.DmgCreator); } }
 
     public void AddDmgCreator(int newId) {
         var index = GameComponentsLookup.DmgCreator;
-        var component = (ECS.Components.DmgCreator)CreateComponent(index, typeof(ECS.Components.DmgCreator));
+        var component = (ECS.C.DmgCreator)CreateComponent(index, typeof(ECS.C.DmgCreator));
         component.id = newId;
         AddComponent(index, component);
     }
 
     public void ReplaceDmgCreator(int newId) {
         var index = GameComponentsLookup.DmgCreator;
-        var component = (ECS.Components.DmgCreator)CreateComponent(index, typeof(ECS.Components.DmgCreator));
+        var component = (ECS.C.DmgCreator)CreateComponent(index, typeof(ECS.C.DmgCreator));
         component.id = newId;
         ReplaceComponent(index, component);
     }

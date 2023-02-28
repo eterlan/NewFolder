@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Entitas;
-using NotImplementedException = System.NotImplementedException;
 
 namespace ECS.System
 {

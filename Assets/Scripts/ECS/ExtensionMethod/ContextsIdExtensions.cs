@@ -1,8 +1,8 @@
 using System;
-using ECS.Components;
+using ECS.C;
 using Entitas;
 
-namespace ECS.UtilAndEx
+namespace ECS.ExtensionMethod
 {
     public static class ContextsIdExtensions
     {

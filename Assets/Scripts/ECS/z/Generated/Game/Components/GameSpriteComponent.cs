@@ -8,19 +8,19 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public ECS.Components.SpriteComponent sprite { get { return (ECS.Components.SpriteComponent)GetComponent(GameComponentsLookup.Sprite); } }
+    public ECS.C.SpriteComponent sprite { get { return (ECS.C.SpriteComponent)GetComponent(GameComponentsLookup.Sprite); } }
     public bool hasSprite { get { return HasComponent(GameComponentsLookup.Sprite); } }
 
     public void AddSprite(UnityEngine.Sprite newSprite) {
         var index = GameComponentsLookup.Sprite;
-        var component = (ECS.Components.SpriteComponent)CreateComponent(index, typeof(ECS.Components.SpriteComponent));
+        var component = (ECS.C.SpriteComponent)CreateComponent(index, typeof(ECS.C.SpriteComponent));
         component.sprite = newSprite;
         AddComponent(index, component);
     }
 
     public void ReplaceSprite(UnityEngine.Sprite newSprite) {
         var index = GameComponentsLookup.Sprite;
-        var component = (ECS.Components.SpriteComponent)CreateComponent(index, typeof(ECS.Components.SpriteComponent));
+        var component = (ECS.C.SpriteComponent)CreateComponent(index, typeof(ECS.C.SpriteComponent));
         component.sprite = newSprite;
         ReplaceComponent(index, component);
     }

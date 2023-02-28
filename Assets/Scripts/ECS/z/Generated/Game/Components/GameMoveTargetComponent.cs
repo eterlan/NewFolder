@@ -8,19 +8,19 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public ECS.Components.MoveTargetComponent moveTarget { get { return (ECS.Components.MoveTargetComponent)GetComponent(GameComponentsLookup.MoveTarget); } }
+    public ECS.C.MoveTargetComponent moveTarget { get { return (ECS.C.MoveTargetComponent)GetComponent(GameComponentsLookup.MoveTarget); } }
     public bool hasMoveTarget { get { return HasComponent(GameComponentsLookup.MoveTarget); } }
 
     public void AddMoveTarget(UnityEngine.Vector2 newTarget) {
         var index = GameComponentsLookup.MoveTarget;
-        var component = (ECS.Components.MoveTargetComponent)CreateComponent(index, typeof(ECS.Components.MoveTargetComponent));
+        var component = (ECS.C.MoveTargetComponent)CreateComponent(index, typeof(ECS.C.MoveTargetComponent));
         component.target = newTarget;
         AddComponent(index, component);
     }
 
     public void ReplaceMoveTarget(UnityEngine.Vector2 newTarget) {
         var index = GameComponentsLookup.MoveTarget;
-        var component = (ECS.Components.MoveTargetComponent)CreateComponent(index, typeof(ECS.Components.MoveTargetComponent));
+        var component = (ECS.C.MoveTargetComponent)CreateComponent(index, typeof(ECS.C.MoveTargetComponent));
         component.target = newTarget;
         ReplaceComponent(index, component);
     }

@@ -8,12 +8,12 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public ECS.Components.HealthComponent health { get { return (ECS.Components.HealthComponent)GetComponent(GameComponentsLookup.Health); } }
+    public ECS.C.HealthComponent health { get { return (ECS.C.HealthComponent)GetComponent(GameComponentsLookup.Health); } }
     public bool hasHealth { get { return HasComponent(GameComponentsLookup.Health); } }
 
     public void AddHealth(int newValue, int newPrevValue, int newFinalValue) {
         var index = GameComponentsLookup.Health;
-        var component = (ECS.Components.HealthComponent)CreateComponent(index, typeof(ECS.Components.HealthComponent));
+        var component = (ECS.C.HealthComponent)CreateComponent(index, typeof(ECS.C.HealthComponent));
         component.value = newValue;
         component.prevValue = newPrevValue;
         component.finalValue = newFinalValue;
@@ -22,7 +22,7 @@ public partial class GameEntity {
 
     public void ReplaceHealth(int newValue, int newPrevValue, int newFinalValue) {
         var index = GameComponentsLookup.Health;
-        var component = (ECS.Components.HealthComponent)CreateComponent(index, typeof(ECS.Components.HealthComponent));
+        var component = (ECS.C.HealthComponent)CreateComponent(index, typeof(ECS.C.HealthComponent));
         component.value = newValue;
         component.prevValue = newPrevValue;
         component.finalValue = newFinalValue;

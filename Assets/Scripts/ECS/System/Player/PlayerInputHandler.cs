@@ -6,13 +6,13 @@ using NotImplementedException = System.NotImplementedException;
 
 namespace ECS.System
 {
-    public class InputHandler : IInitializeSystem, ITearDownSystem
+    public class PlayerInputHandler : IInitializeSystem, ITearDownSystem
     {
         private readonly Camera            m_camera;
         private readonly Contexts      m_contexts;
         private readonly PlayerInputConfig m_inputConfig;
 
-        public InputHandler(Contexts contexts)
+        public PlayerInputHandler(Contexts contexts)
         {
             m_camera      = Camera.main;
             m_contexts    = contexts;

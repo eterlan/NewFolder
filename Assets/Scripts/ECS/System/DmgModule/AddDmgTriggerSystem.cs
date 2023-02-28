@@ -1,12 +1,10 @@
 using System.Collections.Generic;
-using ECS.Config;
 using ECS.Emitter;
-using ECS.UtilAndEx;
+using ECS.ExtensionMethod;
 using ECS.Utility;
 using Entitas;
 using Entitas.Unity;
 using UnityEngine;
-using NotImplementedException = System.NotImplementedException;
 
 namespace ECS.System
 {

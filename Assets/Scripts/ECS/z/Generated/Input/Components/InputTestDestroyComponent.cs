@@ -9,12 +9,12 @@
 public partial class InputContext {
 
     public InputEntity testDestroyEntity { get { return GetGroup(InputMatcher.TestDestroy).GetSingleEntity(); } }
-    public ECS.Components.TestDestroyComponent testDestroy { get { return testDestroyEntity.testDestroy; } }
+    public ECS.C.TestDestroyComponent testDestroy { get { return testDestroyEntity.testDestroy; } }
     public bool hasTestDestroy { get { return testDestroyEntity != null; } }
 
     public InputEntity SetTestDestroy(int newValue) {
         if (hasTestDestroy) {
-            throw new Entitas.EntitasException("Could not set TestDestroy!\n" + this + " already has an entity with ECS.Components.TestDestroyComponent!",
+            throw new Entitas.EntitasException("Could not set TestDestroy!\n" + this + " already has an entity with ECS.C.TestDestroyComponent!",
                 "You should check if the context already has a testDestroyEntity before setting it or use context.ReplaceTestDestroy().");
         }
         var entity = CreateEntity();
@@ -46,19 +46,19 @@ public partial class InputContext {
 //------------------------------------------------------------------------------
 public partial class InputEntity {
 
-    public ECS.Components.TestDestroyComponent testDestroy { get { return (ECS.Components.TestDestroyComponent)GetComponent(InputComponentsLookup.TestDestroy); } }
+    public ECS.C.TestDestroyComponent testDestroy { get { return (ECS.C.TestDestroyComponent)GetComponent(InputComponentsLookup.TestDestroy); } }
     public bool hasTestDestroy { get { return HasComponent(InputComponentsLookup.TestDestroy); } }
 
     public void AddTestDestroy(int newValue) {
         var index = InputComponentsLookup.TestDestroy;
-        var component = (ECS.Components.TestDestroyComponent)CreateComponent(index, typeof(ECS.Components.TestDestroyComponent));
+        var component = (ECS.C.TestDestroyComponent)CreateComponent(index, typeof(ECS.C.TestDestroyComponent));
         component.value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceTestDestroy(int newValue) {
         var index = InputComponentsLookup.TestDestroy;
-        var component = (ECS.Components.TestDestroyComponent)CreateComponent(index, typeof(ECS.Components.TestDestroyComponent));
+        var component = (ECS.C.TestDestroyComponent)CreateComponent(index, typeof(ECS.C.TestDestroyComponent));
         component.value = newValue;
         ReplaceComponent(index, component);
     }

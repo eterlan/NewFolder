@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Entitas;
 using NotImplementedException = System.NotImplementedException;
 
-namespace ECS.Components
+namespace ECS.C
 {
     public interface IModifiableState : IComponent
     {

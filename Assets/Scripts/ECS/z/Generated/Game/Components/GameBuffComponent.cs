@@ -8,19 +8,19 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public ECS.Components.Buff buff { get { return (ECS.Components.Buff)GetComponent(GameComponentsLookup.Buff); } }
+    public ECS.C.Buff buff { get { return (ECS.C.Buff)GetComponent(GameComponentsLookup.Buff); } }
     public bool hasBuff { get { return HasComponent(GameComponentsLookup.Buff); } }
 
     public void AddBuff(System.Collections.Generic.List<int> newBuffIDList) {
         var index = GameComponentsLookup.Buff;
-        var component = (ECS.Components.Buff)CreateComponent(index, typeof(ECS.Components.Buff));
+        var component = (ECS.C.Buff)CreateComponent(index, typeof(ECS.C.Buff));
         component.buffIDList = newBuffIDList;
         AddComponent(index, component);
     }
 
     public void ReplaceBuff(System.Collections.Generic.List<int> newBuffIDList) {
         var index = GameComponentsLookup.Buff;
-        var component = (ECS.Components.Buff)CreateComponent(index, typeof(ECS.Components.Buff));
+        var component = (ECS.C.Buff)CreateComponent(index, typeof(ECS.C.Buff));
         component.buffIDList = newBuffIDList;
         ReplaceComponent(index, component);
     }

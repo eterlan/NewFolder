@@ -2,9 +2,8 @@ using System;
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
 using UnityEngine;
-using EventType = Entitas.CodeGeneration.Attributes.EventType;
 
-namespace ECS.Components
+namespace ECS.C
 {
     [Input, Unique]
     public class LeftMouseComponent : IComponent

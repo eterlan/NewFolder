@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace ECS.System
 {
-    public class RenderDirectionSystem : ReactiveSystem<GameEntity>
+    public class SyncDirectionToViewSystem : ReactiveSystem<GameEntity>
     {
-        public RenderDirectionSystem(IContext<GameEntity> context) : base(context)
+        public SyncDirectionToViewSystem(IContext<GameEntity> context) : base(context)
         {
         }
 
-        public RenderDirectionSystem(ICollector<GameEntity> collector) : base(collector)
+        public SyncDirectionToViewSystem(ICollector<GameEntity> collector) : base(collector)
         {
         }
 

@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly ECS.Components.MoverComponent moverComponent = new ECS.Components.MoverComponent();
+    static readonly ECS.C.MoverComponent moverComponent = new ECS.C.MoverComponent();
 
     public bool isMover {
         get { return HasComponent(GameComponentsLookup.Mover); }

@@ -11,7 +11,7 @@ namespace ECS.System
         public MovementSystem(Contexts contexts)
         {
             m_context       = contexts.input;
-            m_moving        = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.MoveTarget, GameMatcher.MoveSpeed));
+            m_moving        = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.MoveTarget, GameMatcher.MoveSpeed).NoneOf(GameMatcher.StateDeath));
             m_moveCompleted = contexts.game.GetGroup(GameMatcher.MoveComplete);
             m_context       = contexts.input;
         }

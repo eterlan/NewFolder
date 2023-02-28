@@ -47,21 +47,21 @@ public static class InputComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(ECS.Components.CollisionComponent),
-        typeof(ECS.Components.DmgComponent),
-        typeof(ECS.Components.IdComponent),
-        typeof(ECS.Components.KeyDownComponent),
-        typeof(ECS.Components.KeyPressedComponent),
-        typeof(ECS.Components.KeyUpComponent),
-        typeof(ECS.Components.LeftMouseComponent),
-        typeof(ECS.Components.MousePosComponent),
-        typeof(ECS.Components.MoveCommand),
-        typeof(ECS.Components.RightMouseComponent),
-        typeof(ECS.Components.ScheduleDmgComponent),
-        typeof(ECS.Components.ShootCommand),
-        typeof(ECS.Components.SpawnCommand),
-        typeof(ECS.Components.TestDestroyComponent),
-        typeof(ECS.Components.TimeComponent),
-        typeof(ECS.Components.Timer)
+        typeof(ECS.C.CollisionComponent),
+        typeof(ECS.C.DmgComponent),
+        typeof(ECS.C.IdComponent),
+        typeof(ECS.C.KeyDownComponent),
+        typeof(ECS.C.KeyPressedComponent),
+        typeof(ECS.C.KeyUpComponent),
+        typeof(ECS.C.LeftMouseComponent),
+        typeof(ECS.C.MousePosComponent),
+        typeof(ECS.C.MoveCommand),
+        typeof(ECS.C.RightMouseComponent),
+        typeof(ECS.C.ScheduleDmgComponent),
+        typeof(ECS.C.ShootCommand),
+        typeof(ECS.C.SpawnCommand),
+        typeof(ECS.C.TestDestroyComponent),
+        typeof(ECS.C.TimeComponent),
+        typeof(ECS.C.Timer)
     };
 }

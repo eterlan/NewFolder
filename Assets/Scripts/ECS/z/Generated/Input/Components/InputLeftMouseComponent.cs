@@ -35,7 +35,7 @@ public partial class InputContext {
 //------------------------------------------------------------------------------
 public partial class InputEntity {
 
-    static readonly ECS.Components.LeftMouseComponent leftMouseComponent = new ECS.Components.LeftMouseComponent();
+    static readonly ECS.C.LeftMouseComponent leftMouseComponent = new ECS.C.LeftMouseComponent();
 
     public bool isLeftMouse {
         get { return HasComponent(InputComponentsLookup.LeftMouse); }

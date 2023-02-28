@@ -35,7 +35,7 @@ public partial class InputContext {
 //------------------------------------------------------------------------------
 public partial class InputEntity {
 
-    static readonly ECS.Components.MoveCommand moveCommandComponent = new ECS.Components.MoveCommand();
+    static readonly ECS.C.MoveCommand moveCommandComponent = new ECS.C.MoveCommand();
 
     public bool isMoveCommand {
         get { return HasComponent(InputComponentsLookup.MoveCommand); }

@@ -6,10 +6,10 @@ namespace ECS.Features
     {
         public View(Contexts contexts) : base("View Systems")
         {
-            Add(new AddViewSystem(contexts.game));
+            Add(new AddViewRootSystem(contexts.game));
             Add(new AddSpriteSystem(contexts.game));
-            Add(new RenderPositionSystem(contexts.game));
-            Add(new RenderDirectionSystem(contexts.game));
+            Add(new SyncPositionToViewSystem(contexts.game));
+            Add(new SyncDirectionToViewSystem(contexts.game));
         }
     }
 }

@@ -8,19 +8,19 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public ECS.Components.IdComponent id { get { return (ECS.Components.IdComponent)GetComponent(GameComponentsLookup.Id); } }
+    public ECS.C.IdComponent id { get { return (ECS.C.IdComponent)GetComponent(GameComponentsLookup.Id); } }
     public bool hasId { get { return HasComponent(GameComponentsLookup.Id); } }
 
     public void AddId(int newValue) {
         var index = GameComponentsLookup.Id;
-        var component = (ECS.Components.IdComponent)CreateComponent(index, typeof(ECS.Components.IdComponent));
+        var component = (ECS.C.IdComponent)CreateComponent(index, typeof(ECS.C.IdComponent));
         component.value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceId(int newValue) {
         var index = GameComponentsLookup.Id;
-        var component = (ECS.Components.IdComponent)CreateComponent(index, typeof(ECS.Components.IdComponent));
+        var component = (ECS.C.IdComponent)CreateComponent(index, typeof(ECS.C.IdComponent));
         component.value = newValue;
         ReplaceComponent(index, component);
     }

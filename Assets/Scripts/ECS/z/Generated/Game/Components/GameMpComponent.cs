@@ -8,12 +8,12 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public ECS.Components.MpComponent mp { get { return (ECS.Components.MpComponent)GetComponent(GameComponentsLookup.Mp); } }
+    public ECS.C.MpComponent mp { get { return (ECS.C.MpComponent)GetComponent(GameComponentsLookup.Mp); } }
     public bool hasMp { get { return HasComponent(GameComponentsLookup.Mp); } }
 
     public void AddMp(int newCurValue, int newPrevValue) {
         var index = GameComponentsLookup.Mp;
-        var component = (ECS.Components.MpComponent)CreateComponent(index, typeof(ECS.Components.MpComponent));
+        var component = (ECS.C.MpComponent)CreateComponent(index, typeof(ECS.C.MpComponent));
         component.curValue = newCurValue;
         component.prevValue = newPrevValue;
         AddComponent(index, component);
@@ -21,7 +21,7 @@ public partial class GameEntity {
 
     public void ReplaceMp(int newCurValue, int newPrevValue) {
         var index = GameComponentsLookup.Mp;
-        var component = (ECS.Components.MpComponent)CreateComponent(index, typeof(ECS.Components.MpComponent));
+        var component = (ECS.C.MpComponent)CreateComponent(index, typeof(ECS.C.MpComponent));
         component.curValue = newCurValue;
         component.prevValue = newPrevValue;
         ReplaceComponent(index, component);

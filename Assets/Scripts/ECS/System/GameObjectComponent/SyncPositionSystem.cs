@@ -3,7 +3,7 @@ using Entitas;
 
 namespace ECS.System
 {
-    public class RenderPositionSystem : ReactiveSystem<GameEntity>
+    public class SyncPositionToViewSystem : ReactiveSystem<GameEntity>
     {
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
         {
@@ -25,7 +25,7 @@ namespace ECS.System
             }
         }
 
-        public RenderPositionSystem(IContext<GameEntity> context) : base(context)
+        public SyncPositionToViewSystem(IContext<GameEntity> context) : base(context)
         {
         }
     }

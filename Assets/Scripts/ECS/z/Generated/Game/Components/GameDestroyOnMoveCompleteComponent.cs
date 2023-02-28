@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly ECS.Components.DestroyOnMoveComplete destroyOnMoveCompleteComponent = new ECS.Components.DestroyOnMoveComplete();
+    static readonly ECS.C.DestroyOnMoveComplete destroyOnMoveCompleteComponent = new ECS.C.DestroyOnMoveComplete();
 
     public bool isDestroyOnMoveComplete {
         get { return HasComponent(GameComponentsLookup.DestroyOnMoveComplete); }

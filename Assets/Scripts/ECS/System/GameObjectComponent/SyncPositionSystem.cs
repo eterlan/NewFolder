@@ -7,7 +7,7 @@ namespace ECS.System
     {
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
         {
-            return context.CreateCollector(GameMatcher.Position);
+            return context.CreateCollector(GameMatcher.Position); 
         }
 
         protected override bool Filter(GameEntity entity)

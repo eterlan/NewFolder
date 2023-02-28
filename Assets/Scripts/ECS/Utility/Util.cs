@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using ECS.ExtensionMethod;
 using Entitas;
@@ -5,6 +6,7 @@ using Entitas.Unity;
 using Entitas.VisualDebugging.Unity.Editor;
 using Sirenix.Utilities.Editor;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace ECS.Utility
 {
@@ -48,6 +50,30 @@ namespace ECS.Utility
             go.Unlink();
             e.Destroy();
             Object.Destroy(go);
+        }
+
+        public static void AddMonoMapper(this GameEntity owner, GameObject view)
+        {
+            var allTrs = view.GetComponentsInChildren<Transform>();
+            foreach (var tr in allTrs)
+            {
+                if (tr.name.StartsWith("r_", StringComparison.OrdinalIgnoreCase))
+                {
+                    var strs = tr.name.Split('_');
+                    if (strs.Length < 2)
+                    {
+                        CyLog.LogWarn($"{tr.gameObject}的命名不符合要求, 请重新命名");
+                        continue;
+                    }
+
+                    var type = strs[1];
+                    var name = strs[2];
+                    if (type.Equals("tr", StringComparison.OrdinalIgnoreCase))
+                    {
+                        owner.monoMapper.mapper.Add(name.ToLower(), tr);
+                    }
+                }
+            }
         }
     }
 }

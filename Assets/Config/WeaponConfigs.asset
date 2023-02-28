@@ -14,6 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   configItems:
   - dmgID: 0
+    weaponPrefab:
+      m_AssetGUID: 81b3d30792d24994a9899186c3301941
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
     spriteRef:
       m_AssetGUID: 10ee401cfc2207e46ab6edd7884ea682
       m_SubObjectName: Bullet

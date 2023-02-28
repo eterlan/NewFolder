@@ -1,12 +1,16 @@
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using ECS.Converter;
 using ECS.Utility;
 using Entitas;
 using UnityEngine;
 
 namespace ECS.System
 {
+    /// <summary>
+    /// TODO only player? no
+    /// </summary>
     public class PlayerShootSystem : ReactiveSystem<InputEntity>, ITearDownSystem
     {
         private readonly Contexts                m_contexts;
@@ -41,16 +45,18 @@ namespace ECS.System
 
                 sprite = spriteRef.IsDone ? (Sprite)weaponInfo.spriteRef.editorAsset 
                     : await weaponInfo.spriteRef.LoadAssetAsync();
-
-
+                if (!playerEntity.monoMapper.TryGetMonoComponent<Transform>(SpecialPoint.Muzzle.ToString(), out var transform))
+                    return;
+                
                 while (m_contexts.input.isShootCommand)
                 {
-                    var playerPos       = playerEntity.position.value;
+                    var pos       = transform.position;
+                    var playerPos = playerEntity.position.value;
                     var direction = (m_contexts.input.mousePos.posWS - playerEntity.position.value).normalized;
-                    var targetPos    = direction * weaponInfo.range + playerPos;
+                    var targetPos = direction * weaponInfo.range + playerPos;
                     var e         = m_contexts.game.CreateEntity();
                     e.AddSprite(sprite);
-                    e.AddPosition(playerPos, playerPos);
+                    e.AddPosition(pos, pos);
                     e.AddMoveTarget(targetPos);
                     e.AddMoveSpeed(weaponInfo.velocity);
                     e.isTrigger = true;

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Entitas.Unity;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -10,7 +11,7 @@ namespace ECS.Converter
         [Button]
         public void Test()
         {
-            Debug.Log("VARs");
+            
         }
         private void Start()
         {
@@ -29,6 +30,7 @@ namespace ECS.Converter
             e.AddHealth(config.hp, config.hp, config.hp);
             e.AddView(gameObject);
             e.AddWeapon(0);
+            e.AddMonoMapper(new Dictionary<string, Component>());
             gameObject.Link(e);
         }
 

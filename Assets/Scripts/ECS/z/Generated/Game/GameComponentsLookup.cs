@@ -24,19 +24,18 @@ public static class GameComponentsLookup {
     public const int MoveTarget = 13;
     public const int Mp = 14;
     public const int Name = 15;
-    public const int NeedView = 16;
-    public const int PosFromViewGroup = 17;
-    public const int Position = 18;
-    public const int Sprite = 19;
-    public const int StateDeath = 20;
-    public const int TagPlayer = 21;
-    public const int Trigger = 22;
-    public const int View = 23;
-    public const int ViewRoot = 24;
-    public const int Weapon = 25;
-    public const int WeaponPos = 26;
+    public const int PosFromViewGroup = 16;
+    public const int Position = 17;
+    public const int Sprite = 18;
+    public const int StateDeath = 19;
+    public const int TagPlayer = 20;
+    public const int Trigger = 21;
+    public const int View = 22;
+    public const int ViewRoot = 23;
+    public const int Weapon = 24;
+    public const int WeaponPos = 25;
 
-    public const int TotalComponents = 27;
+    public const int TotalComponents = 26;
 
     public static readonly string[] componentNames = {
         "Buff",
@@ -55,7 +54,6 @@ public static class GameComponentsLookup {
         "MoveTarget",
         "Mp",
         "Name",
-        "NeedView",
         "PosFromViewGroup",
         "Position",
         "Sprite",
@@ -72,7 +70,7 @@ public static class GameComponentsLookup {
         typeof(ECS.C.Buff),
         typeof(ECS.C.Destroy),
         typeof(ECS.C.DestroyOnMoveComplete),
-        typeof(ECS.C.DirectionComponent),
+        typeof(ECS.C.Direction),
         typeof(ECS.C.DmgCreator),
         typeof(ECS.C.Equipment),
         typeof(ECS.C.HealthComponent),
@@ -85,9 +83,8 @@ public static class GameComponentsLookup {
         typeof(ECS.C.MoveTargetComponent),
         typeof(ECS.C.MpComponent),
         typeof(ECS.C.Name),
-        typeof(ECS.C.NeedViewComponent),
         typeof(ECS.C.PosFromViewGroup),
-        typeof(ECS.C.PositionComponent),
+        typeof(ECS.C.Position),
         typeof(ECS.C.SpriteComponent),
         typeof(ECS.C.StateDeath),
         typeof(ECS.C.TagPlayer),

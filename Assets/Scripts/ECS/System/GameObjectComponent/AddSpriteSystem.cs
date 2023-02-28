@@ -2,13 +2,12 @@ using System.Collections.Generic;
 using ECS.ExtensionMethod;
 using Entitas;
 using UnityEngine;
+using NotImplementedException = System.NotImplementedException;
 
 namespace ECS.System
 {
     public class AddSpriteSystem : ReactiveSystem<GameEntity>
     {
-        
-
         protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
         {
             return context.CreateCollector(GameMatcher.Sprite);

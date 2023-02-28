@@ -1,3 +1,4 @@
+using ECS.Converter;
 using ECS.System;
 
 namespace ECS.Features
@@ -10,6 +11,7 @@ namespace ECS.Features
     {
         public ExecuteFirstGroup(Contexts contexts) : base(nameof(ExecuteFirstGroup))
         {
+            Add(new InitMonoMapperSystem(contexts.game));
             Add(new PlayerInputHandler(contexts));
             Add(new MarkDeathSystem(contexts.game));
             Add(new DestroyOnMoveCompleteSystem(contexts.game));

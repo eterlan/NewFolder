@@ -8,12 +8,12 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public ECS.C.PositionComponent position { get { return (ECS.C.PositionComponent)GetComponent(GameComponentsLookup.Position); } }
+    public ECS.C.Position position { get { return (ECS.C.Position)GetComponent(GameComponentsLookup.Position); } }
     public bool hasPosition { get { return HasComponent(GameComponentsLookup.Position); } }
 
     public void AddPosition(UnityEngine.Vector2 newValue, UnityEngine.Vector2 newPrevValue) {
         var index = GameComponentsLookup.Position;
-        var component = (ECS.C.PositionComponent)CreateComponent(index, typeof(ECS.C.PositionComponent));
+        var component = (ECS.C.Position)CreateComponent(index, typeof(ECS.C.Position));
         component.value = newValue;
         component.prevValue = newPrevValue;
         AddComponent(index, component);
@@ -21,7 +21,7 @@ public partial class GameEntity {
 
     public void ReplacePosition(UnityEngine.Vector2 newValue, UnityEngine.Vector2 newPrevValue) {
         var index = GameComponentsLookup.Position;
-        var component = (ECS.C.PositionComponent)CreateComponent(index, typeof(ECS.C.PositionComponent));
+        var component = (ECS.C.Position)CreateComponent(index, typeof(ECS.C.Position));
         component.value = newValue;
         component.prevValue = newPrevValue;
         ReplaceComponent(index, component);

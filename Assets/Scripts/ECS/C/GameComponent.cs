@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using ECS.Utility;
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
 using UnityEngine;
@@ -31,23 +32,18 @@ namespace ECS.C
     }
 
     [Game]
-    public class PositionComponent : IComponent
+    public class Position : IComponent
     {
         public Vector2 value;
         public Vector2 prevValue;
     }
 
     [Game]
-    public class DirectionComponent : IComponent
+    public class Direction : IComponent
     {
         public float value;
     }
 
-    [Game, Cleanup(CleanupMode.RemoveComponent)]
-    public class NeedViewComponent : IComponent
-    {
-    
-    }
 
     [Game, Unique]
     public class ViewRoot : IComponent
@@ -142,11 +138,35 @@ namespace ECS.C
         
     }
 
+    /// <summary>
+    /// <see cref="ECS.Converter.InitMonoMapperSystem"/>
+    /// </summary>
     [Game]
     public class MonoMapper : IComponent
     {
         public Dictionary<string, Component> mapper = new ();
+
+        public bool TryGetMonoComponent<T>(string key, out T component) where T : Component
+        {
+            component = default;
+            key = key.ToLower();
+            if (!mapper.TryGetValue(key, out var value))
+            {
+                CyLog.LogError($"字典中找不到对应的key:{key}");
+                return false;
+            }
+
+            if (value is not T t)
+            {
+                CyLog.LogError($"字典中的key对应的值类型为{value.GetType()}而不是{typeof(T)}");
+                return false;
+            }
+
+            component = t;
+            return true;
+        }
     }
+    
     public class WeaponPos : IComponent
     {
         public Vector2 weaponCarryPoint;

@@ -8,8 +8,7 @@ namespace ECS.Features
         {
             Add(new AddViewRootSystem(contexts.game));
             Add(new AddSpriteSystem(contexts.game));
-            Add(new SyncPositionToViewSystem(contexts.game));
-            Add(new SyncDirectionToViewSystem(contexts.game));
+            Add(new AddWeaponSystem(contexts));
         }
     }
 }

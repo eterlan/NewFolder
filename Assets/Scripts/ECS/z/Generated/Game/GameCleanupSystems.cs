@@ -9,7 +9,6 @@
 public sealed class GameCleanupSystems : Feature {
 
     public GameCleanupSystems(Contexts contexts) {
-        Add(new RemoveNeedViewGameSystem(contexts));
         Add(new RemoveTriggerGameSystem(contexts));
     }
 }

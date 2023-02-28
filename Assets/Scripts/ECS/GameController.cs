@@ -42,9 +42,12 @@ namespace ECS
                                          .Add(new Movement(contexts))
                                          .Add(new ExecuteMidGroup(contexts))
                                          .Add(new Chase(contexts))
-                                         .Add(new Collision(contexts))
                                          .Add(new Dmg(contexts))
 
+                                         // !important, 应该先同步位置再添加物理, 不然会先跟原点的物体碰了之后再修改位置.
+                                         .Add(new SyncToView(contexts))
+                                         .Add(new Collision(contexts))
+                                         
                                          .Add(new GameCleanupSystems(contexts))
                                          .Add(new InputCleanupSystems(contexts))
                                          .Add(new CleanUp(contexts));
